@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="uk">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -83,6 +84,17 @@
   --muted:#888880;--border:rgba(13,13,13,.12);
   --display:'Bebas Neue',sans-serif;--body:'DM Sans',sans-serif;
 }
+  <script>
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on("init", user => {
+    if (!user) {
+      window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin/";
+      });
+    }
+  });
+}
+</script>
 html{scroll-behavior:smooth}
 body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden}
 
