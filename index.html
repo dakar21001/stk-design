@@ -2866,6 +2866,7 @@ document.querySelectorAll('#pg-home .wcard').forEach((c,i)=>{
   c.addEventListener('click',()=>{ CASES[caseMap[i]].from='home'; goCase(caseMap[i]); });
 });
 document.querySelectorAll('#pgrid .pcard[data-cat]').forEach((c,i)=>{
+  if(c.getAttribute('onclick')) return; // пропускаємо картки з власним onclick
   const key = Object.keys(CASES)[i % Object.keys(CASES).length];
   c.addEventListener('click',()=>{ CASES[key].from='projects'; goCase(key); });
 });
