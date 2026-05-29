@@ -927,7 +927,7 @@ function platLabel(v) {
 }
 
 // ── SAVE ──
-function saveProject() {
+async function saveProject() {
   const title = document.getElementById('f-title').value.trim();
   const cat   = document.getElementById('f-cat').value;
   const plat  = document.getElementById('f-plat').value;
@@ -939,32 +939,30 @@ function saveProject() {
     return;
   }
 
-  const projects = getProjects();
   const project = {
-    id: editingId || Date.now().toString(),
     title,
     cat,
     plat,
     year,
-    client:    document.getElementById('f-client').value.trim(),
-    tags:      document.getElementById('f-tags').value.trim(),
+    client:   document.getElementById('f-client').value.trim(),
+    tags:     document.getElementById('f-tags').value.trim(),
     img,
-    desc:      document.getElementById('f-desc').value.trim(),
-    featured:  document.getElementById('f-featured').value,
-    order:     parseInt(document.getElementById('f-order').value) || 0,
+    desc:     document.getElementById('f-desc').value.trim(),
+    featured: document.getElementById('f-featured').value,
+    order:    parseInt(document.getElementById('f-order').value) || 0,
   };
 
-  if (editingId) {
-    const idx = projects.findIndex(p => p.id === editingId);
-    if (idx !== -1) projects[idx] = project;
-    editingId = null;
-  } else {
-    projects.unshift(project);
-  }
+  // Add id only if editing
+  if (editingId) project.id = editingId;
 
-  saveProjects(projects);
-  renderAll();
-  notify('✓ Проєкт збережено!');
+  const btn = document.querySelector('.btn-accent[onclick="saveProject()"]');
+  if (btn) { btn.textContent = 'Збереження...'; btn.disabled = true; }
+
+  await fbSaveProject(project);
+
+  if (btn) { btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Зберегти проєкт'; btn.disabled = false; }
+
+  editingId = null;
   showCodeOutput(project);
 }
 
