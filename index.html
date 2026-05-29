@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="uk">
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,17 +83,6 @@
   --muted:#888880;--border:rgba(13,13,13,.12);
   --display:'Bebas Neue',sans-serif;--body:'DM Sans',sans-serif;
 }
-  <script>
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on("init", user => {
-    if (!user) {
-      window.netlifyIdentity.on("login", () => {
-        document.location.href = "/admin/";
-      });
-    }
-  });
-}
-</script>
 html{scroll-behavior:smooth}
 body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden}
 
@@ -1606,6 +1594,28 @@ footer::before{
   .cookie-btn-accept,.cookie-btn-decline{flex:1;text-align:center}
 }
 </style>
+
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+  import { getFirestore, collection, onSnapshot, query, orderBy } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+  const firebaseConfig = {
+    apiKey: "AIzaSyBoktlW8SWri0nq9Lf4XSqsGaRIGqldzRo",
+    authDomain: "stk-design.firebaseapp.com",
+    projectId: "stk-design",
+    storageBucket: "stk-design.firebasestorage.app",
+    messagingSenderId: "633263156848",
+    appId: "1:633263156848:web:173a7b65ebbcff36eb8eb5"
+  };
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  window._db = db;
+  window._fbModules = { collection, onSnapshot, query, orderBy };
+  window.dispatchEvent(new Event('fb-ready'));
+</script>
+<style>
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+</style>
 </head>
 <body>
 
@@ -1960,16 +1970,11 @@ footer::before{
         <div class="wcard-overlay"><div class="wcard-tag">Mobile App / iOS</div><div class="wcard-title">Health Tracker App</div></div>
         <div class="wcard-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
       </div>
-      <div class="wcard" onclick="CASES['ai-football'].from='home'; goCase('ai-football')">
-        <img class="wcard-img" src="https://cdn.dribbble.com/userupload/46796700/file/49e68ea0fac51bbbf4976c057d2bdbb8.png?resize=752x&vertical=center" alt="AI Football Analytics">
-        <div class="wcard-overlay">
-        <div class="wcard-tag">Mobile App</div>
-        <div class="wcard-title">AI Football Analytics</div>
+      <div class="wcard">
+        <img class="wcard-img" src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=700&q=80&auto=format&fit=crop" alt="Corp Platform">
+        <div class="wcard-overlay"><div class="wcard-tag">Corporate Website</div><div class="wcard-title">B2B Corp Platform</div></div>
+        <div class="wcard-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
       </div>
-  <div class="wcard-arrow">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-  </div>
-</div>
     </div>
   </div>
 </section>
@@ -2398,48 +2403,8 @@ footer::before{
 <!-- CARDS -->
 <div class="pgrid-wrap">
   <div class="pgrid" id="pgrid">
-
-    <div class="pcard" data-cat="saas" data-plat="desktop"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Десктоп</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">SaaS / B2B</div><div class="pcard-title">Fintech Dashboard</div></div></div><div class="pcard-foot"><span class="pcard-year">2024</span><div class="pcard-tags"><span class="pcard-tag">UI/UX</span><span class="pcard-tag">React</span></div></div></div>
-
-    <div class="pcard" data-cat="mobile" data-plat="mobile"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Мобільна</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">Mobile App</div><div class="pcard-title">Health Tracker App</div></div></div><div class="pcard-foot"><span class="pcard-year">2024</span><div class="pcard-tags"><span class="pcard-tag">iOS</span><span class="pcard-tag">React Native</span></div></div></div>
-
-    <div class="pcard" data-cat="web" data-plat="desktop"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Десктоп</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">Corporate Website</div><div class="pcard-title">B2B Corp Platform</div></div></div><div class="pcard-foot"><span class="pcard-year">2023</span><div class="pcard-tags"><span class="pcard-tag">Web</span><span class="pcard-tag">Next.js</span></div></div></div>
-
-    <div class="pcard" data-cat="landing" data-plat="both"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="14" height="10" rx="1"/><rect x="16" y="9" width="6" height="7" rx="1"/></svg>Обидві</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">Landing Page</div><div class="pcard-title">SaaS Product Launch</div></div></div><div class="pcard-foot"><span class="pcard-year">2024</span><div class="pcard-tags"><span class="pcard-tag">Landing</span><span class="pcard-tag">Framer</span></div></div></div>
-
-    <div class="pcard" data-cat="dashboard" data-plat="desktop"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Десктоп</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">Dashboard</div><div class="pcard-title">Analytics Platform</div></div></div><div class="pcard-foot"><span class="pcard-year">2024</span><div class="pcard-tags"><span class="pcard-tag">Dashboard</span><span class="pcard-tag">D3.js</span></div></div></div>
-
-    <div class="pcard" data-cat="ui-ux" data-plat="both"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="14" height="10" rx="1"/><rect x="16" y="9" width="6" height="7" rx="1"/></svg>Обидві</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">UI/UX Design</div><div class="pcard-title">Design System Pro</div></div></div><div class="pcard-foot"><span class="pcard-year">2023</span><div class="pcard-tags"><span class="pcard-tag">Figma</span><span class="pcard-tag">Design Sys</span></div></div></div>
-
-    <div class="pcard" data-cat="mobile" data-plat="mobile"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Мобільна</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">Mobile App</div><div class="pcard-title">Fintech Wallet</div></div></div><div class="pcard-foot"><span class="pcard-year">2023</span><div class="pcard-tags"><span class="pcard-tag">Android</span><span class="pcard-tag">iOS</span></div></div></div>
-
-    <div class="pcard" data-cat="saas" data-plat="desktop"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Десктоп</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">SaaS / B2B</div><div class="pcard-title">CRM Platform</div></div></div><div class="pcard-foot"><span class="pcard-year">2023</span><div class="pcard-tags"><span class="pcard-tag">SaaS</span><span class="pcard-tag">TypeScript</span></div></div></div>
-
-    <div class="pcard" data-cat="landing" data-plat="both"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="14" height="10" rx="1"/><rect x="16" y="9" width="6" height="7" rx="1"/></svg>Обидві</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">Landing Page</div><div class="pcard-title">Creative Agency Site</div></div></div><div class="pcard-foot"><span class="pcard-year">2022</span><div class="pcard-tags"><span class="pcard-tag">Landing</span><span class="pcard-tag">GSAP</span></div></div></div>
-
-    <div class="pcard" data-cat="dashboard" data-plat="both"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1599658880436-c61792e70672?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="14" height="10" rx="1"/><rect x="16" y="9" width="6" height="7" rx="1"/></svg>Обидві</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">Dashboard</div><div class="pcard-title">HR & People Analytics</div></div></div><div class="pcard-foot"><span class="pcard-year">2022</span><div class="pcard-tags"><span class="pcard-tag">Dashboard</span><span class="pcard-tag">Charts</span></div></div></div>
-
-    <div class="pcard" data-cat="web" data-plat="both"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="14" height="10" rx="1"/><rect x="16" y="9" width="6" height="7" rx="1"/></svg>Обидві</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">Web Development</div><div class="pcard-title">Enterprise Portal</div></div></div><div class="pcard-foot"><span class="pcard-year">2022</span><div class="pcard-tags"><span class="pcard-tag">Web</span><span class="pcard-tag">CMS</span></div></div></div>
-
-    <div class="pcard" data-cat="mobile" data-plat="mobile"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Мобільна</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">Mobile App</div><div class="pcard-title">Fitness Training App</div></div></div><div class="pcard-foot"><span class="pcard-year">2022</span><div class="pcard-tags"><span class="pcard-tag">iOS</span><span class="pcard-tag">UX</span></div></div></div>
-
-    <div class="pcard" data-cat="ui-ux" data-plat="desktop"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Десктоп</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">UI/UX Design</div><div class="pcard-title">E-Commerce Redesign</div></div></div><div class="pcard-foot"><span class="pcard-year">2021</span><div class="pcard-tags"><span class="pcard-tag">UI/UX</span><span class="pcard-tag">E-com</span></div></div></div>
-
-    <div class="pcard" data-cat="saas" data-plat="both"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="14" height="10" rx="1"/><rect x="16" y="9" width="6" height="7" rx="1"/></svg>Обидві</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">SaaS / B2B</div><div class="pcard-title">EdTech Platform</div></div></div><div class="pcard-foot"><span class="pcard-year">2021</span><div class="pcard-tags"><span class="pcard-tag">SaaS</span><span class="pcard-tag">React</span></div></div></div>
-
-    <div class="pcard" data-cat="landing" data-plat="desktop"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Десктоп</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">Landing Page</div><div class="pcard-title">Startup Investment Page</div></div></div><div class="pcard-foot"><span class="pcard-year">2021</span><div class="pcard-tags"><span class="pcard-tag">Landing</span><span class="pcard-tag">Webflow</span></div></div></div>
-
-    <div class="pcard" data-cat="web" data-plat="desktop"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Десктоп</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">Web Development</div><div class="pcard-title">Studio Portfolio</div></div></div><div class="pcard-foot"><span class="pcard-year">2020</span><div class="pcard-tags"><span class="pcard-tag">Web</span><span class="pcard-tag">GSAP</span></div></div></div>
-
-    <div class="pcard" data-cat="ui-ux" data-plat="mobile"><div class="pcard-img-wrap"><img class="pcard-img" src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=700&q=75&auto=format&fit=crop" alt=""><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Мобільна</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">UI/UX Design</div><div class="pcard-title">Travel App UX</div></div></div><div class="pcard-foot"><span class="pcard-year">2020</span><div class="pcard-tags"><span class="pcard-tag">Mobile UX</span><span class="pcard-tag">Figma</span></div></div></div>
-    <div class="pcard" data-cat="mobile" data-plat="mobile" onclick="goCase('ai-football')"><div class="pcard-img-wrap"><img class="pcard-img" src="https://cdn.dribbble.com/userupload/46796700/file/49e68ea0fac51bbbf4976c057d2bdbb8.png?resize=752x&vertical=center" alt="AI Football Analytics"><div class="pcard-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Мобільна</div><div class="pcard-arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div><div class="pcard-ov"><div class="pcard-cat">Mobile</div><div class="pcard-title">AI Football Analytics</div></div>
-  </div>
-  <div class="pcard-foot">
-    <span class="pcard-year">2026</span>
-    <div class="pcard-tags"><span class="pcard-tag">UI/UX</span><span class="pcard-tag">Figma</span><span class="pcard-tag">React</span><span class="pcard-tag">Node</span></div>
-  </div>
-</div>
-    <div class="pgrid-empty" id="pgEmpty"><div class="empty-ico">◎</div><div class="empty-h">Нічого не знайдено</div><p class="empty-p">Спробуйте змінити фільтри.</p></div>
+<div id="pgrid-loading" style="grid-column:1/-1;text-align:center;padding:80px 20px;display:flex;flex-direction:column;align-items:center;gap:16px"><div style="width:36px;height:36px;border:2px solid var(--border);border-top-color:var(--ink);border-radius:50%;animation:spin .8s linear infinite"></div><div style="font-size:13px;color:var(--muted)">Завантаження проєктів...</div></div>
+<div class="pgrid-empty" id="pgEmpty"><div class="empty-ico">◎</div><div class="empty-h">Нічого не знайдено</div><p class="empty-p">Спробуйте змінити фільтри.</p></div>
   </div>
 </div>
 
@@ -2793,24 +2758,7 @@ const CASES = {
     img1:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&q=85&auto=format&fit=crop',
     s1n:'×2.1',s1l:'Ліди з форм',s2n:'65%',s2l:'Час на сторінці',s3n:'5',s3l:'Мов інтерфейсу',s4n:'6 тж',s4l:'Від брифу до запуску',
     from:'projects'
-  },
-  'ai-football': {
-  cover: 'https://cdn.dribbble.com/userupload/46796700/file/49e68ea0fac51bbbf4976c057d2bdbb8.png?resize=752x&vertical=center',
-  cat: 'Mobile App', plat: 'Мобільна',
-  title: 'AI Football Analytics',
-  year: '2026', client: 'Ваш клієнт', duration: '— місяців',
-  subtitle: 'Опис проєкту',
-  tech: ['UI/UX', 'Figma', 'React', 'Node'],
-  d1: 'Перший абзац опису проєкту...',
-  d2: 'Другий абзац...',
-  d3: 'Третій абзац...',
-  img1: 'https://cdn.dribbble.com/userupload/46796700/file/49e68ea0fac51bbbf4976c057d2bdbb8.png?resize=752x&vertical=center',
-  s1n: '—', s1l: 'Метрика 1',
-  s2n: '—', s2l: 'Метрика 2',
-  s3n: '—', s3l: 'Метрика 3',
-  s4n: '—', s4l: 'Метрика 4',
-  from: 'projects'
-}
+  }
 };
 
 let prevPage = 'projects';
@@ -2866,7 +2814,6 @@ document.querySelectorAll('#pg-home .wcard').forEach((c,i)=>{
   c.addEventListener('click',()=>{ CASES[caseMap[i]].from='home'; goCase(caseMap[i]); });
 });
 document.querySelectorAll('#pgrid .pcard[data-cat]').forEach((c,i)=>{
-  if(c.getAttribute('onclick')) return; // пропускаємо картки з власним onclick
   const key = Object.keys(CASES)[i % Object.keys(CASES).length];
   c.addEventListener('click',()=>{ CASES[key].from='projects'; goCase(key); });
 });
@@ -3497,6 +3444,123 @@ function closeTgToast(){
     <button class="cookie-btn-decline" onclick="declineCookies()">Відхилити</button>
   </div>
 </div>
+
+
+<script>
+// ── Firebase Projects Loader ──
+const PLAT_ICONS = {
+  desktop:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+  mobile:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,
+  both:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="14" height="10" rx="1"/><rect x="16" y="9" width="6" height="7" rx="1"/></svg>`
+};
+const PLAT_LABELS={desktop:'Десктоп',mobile:'Мобільна',both:'Обидві'};
+const ARR_SVG=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>`;
+
+window._firebaseProjects = [];
+
+window.openCaseFromFirebase = function(id){
+  const p = window._firebaseProjects.find(p=>p.id===id);
+  if(!p) return;
+  const key = '_fb_'+id;
+  CASES[key] = {
+    cover:p.img, cat:p.catLabel||p.cat, plat:PLAT_LABELS[p.plat]||p.plat,
+    title:p.title, year:p.year, client:p.client||'—', duration:p.duration||'—',
+    subtitle:p.subtitle||p.title,
+    tech:(p.tags||'').split(',').map(t=>t.trim()),
+    d1:p.desc1||p.desc||'', d2:p.desc2||'', d3:p.desc3||'',
+    img1:p.img,
+    s1n:p.s1n||'—',s1l:p.s1l||'',s2n:p.s2n||'—',s2l:p.s2l||'',
+    s3n:p.s3n||'—',s3l:p.s3l||'',s4n:p.s4n||'—',s4l:p.s4l||'',
+    from:'projects'
+  };
+  goCase(key);
+};
+
+function renderFirebaseProjects(projects){
+  window._firebaseProjects = projects;
+  const grid = document.getElementById('pgrid');
+  if(!grid) return;
+
+  // Remove loader
+  const loader = document.getElementById('pgrid-loading');
+  if(loader) loader.remove();
+
+  // Remove old firebase cards
+  grid.querySelectorAll('.fb-pcard').forEach(el=>el.remove());
+
+  if(!projects.length) return;
+
+  const frag = document.createDocumentFragment();
+  projects.forEach(p=>{
+    const tags=(p.tags||'').split(',').map(t=>`<span class="pcard-tag">${t.trim()}</span>`).join('');
+    const div=document.createElement('div');
+    div.className='pcard fb-pcard';
+    div.dataset.cat=p.cat;
+    div.dataset.plat=p.plat;
+    div.onclick=()=>openCaseFromFirebase(p.id);
+    div.innerHTML=`
+      <div class="pcard-img-wrap">
+        <img class="pcard-img" src="${p.img}" alt="${p.title}">
+        <div class="pcard-badge">${PLAT_ICONS[p.plat]||''}${PLAT_LABELS[p.plat]||p.plat}</div>
+        <div class="pcard-arr">${ARR_SVG}</div>
+        <div class="pcard-ov">
+          <div class="pcard-cat">${p.catLabel||p.cat}</div>
+          <div class="pcard-title">${p.title}</div>
+        </div>
+      </div>
+      <div class="pcard-foot">
+        <span class="pcard-year">${p.year}</span>
+        <div class="pcard-tags">${tags}</div>
+      </div>`;
+    frag.appendChild(div);
+  });
+
+  // Insert before pgrid-empty
+  const empty = grid.querySelector('.pgrid-empty');
+  if(empty) grid.insertBefore(frag, empty);
+  else grid.appendChild(frag);
+
+  // Update counter
+  const total = document.getElementById('proj-total');
+  if(total) total.textContent = projects.length;
+
+  // Re-run filter
+  if(typeof runFilter==='function') runFilter();
+
+  // Featured on home works grid
+  const wg = document.querySelector('.works-grid');
+  if(wg){
+    wg.querySelectorAll('.fb-wcard').forEach(el=>el.remove());
+    projects.filter(p=>p.featured==='1'||p.featured===true).forEach(p=>{
+      const div=document.createElement('div');
+      div.className='wcard fb-wcard';
+      div.style.cursor='pointer';
+      div.onclick=()=>openCaseFromFirebase(p.id);
+      div.innerHTML=`<img class="wcard-img" src="${p.img}" alt="${p.title}"><div class="wcard-overlay"><div class="wcard-tag">${p.catLabel||p.cat}</div><div class="wcard-title">${p.title}</div></div><div class="wcard-arrow">${ARR_SVG}</div>`;
+      wg.appendChild(div);
+    });
+  }
+}
+
+function initFirebaseLoader(){
+  const {collection,onSnapshot,query,orderBy}=window._fbModules;
+  const db=window._db;
+  const q=query(collection(db,'projects'),orderBy('order','asc'));
+  onSnapshot(q,snap=>{
+    const projects=snap.docs.map(d=>({id:d.id,...d.data()}));
+    renderFirebaseProjects(projects);
+  },err=>{
+    console.error('Firebase:',err);
+    const loader=document.getElementById('pgrid-loading');
+    if(loader) loader.innerHTML='<div style="color:var(--muted);font-size:13px">Помилка завантаження проєктів</div>';
+  });
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  if(window._fbModules) initFirebaseLoader();
+  else window.addEventListener('fb-ready', initFirebaseLoader);
+});
+</script>
 
 </body>
 </html>
