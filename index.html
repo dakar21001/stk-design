@@ -1959,21 +1959,10 @@ footer::before{
       <h2>ВИБРАНІ<br>РОБОТИ</h2>
       <button class="works-view-all" onclick="goProjects()">Всі проєкти →</button>
     </div>
-    <div class="works-grid fade-in">
-      <div class="wcard">
-        <img class="wcard-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80&auto=format&fit=crop" alt="Fintech Dashboard">
-        <div class="wcard-overlay"><div class="wcard-tag">SaaS / Fintech</div><div class="wcard-title">Fintech Dashboard</div></div>
-        <div class="wcard-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-      </div>
-      <div class="wcard">
-        <img class="wcard-img" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=700&q=80&auto=format&fit=crop" alt="Mobile App">
-        <div class="wcard-overlay"><div class="wcard-tag">Mobile App / iOS</div><div class="wcard-title">Health Tracker App</div></div>
-        <div class="wcard-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
-      </div>
-      <div class="wcard">
-        <img class="wcard-img" src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=700&q=80&auto=format&fit=crop" alt="Corp Platform">
-        <div class="wcard-overlay"><div class="wcard-tag">Corporate Website</div><div class="wcard-title">B2B Corp Platform</div></div>
-        <div class="wcard-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></div>
+    <div class="works-grid fade-in" id="works-grid">
+      <div style="grid-column:1/-1;padding:60px 0;text-align:center;color:var(--muted);font-size:13px;display:flex;align-items:center;justify-content:center;gap:10px">
+        <div style="width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--ink);border-radius:50%;animation:spin .7s linear infinite"></div>
+        Завантаження...
       </div>
     </div>
   </div>
@@ -3479,30 +3468,56 @@ window.openCaseFromFirebase = function(id){
 function renderFirebaseProjects(projects){
   window._firebaseProjects = projects;
   const grid = document.getElementById('pgrid');
-  if(!grid) return;
+  const worksGrid = document.getElementById('works-grid');
+  const ARR = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>`;
 
-  // Remove loader
+  // ── Render works grid (featured only) ──
+  if (worksGrid) {
+    const featured = projects.filter(p => p.featured && p.published !== false);
+    if (!featured.length) {
+      worksGrid.innerHTML = `<div style="grid-column:1/-1;padding:60px 0;text-align:center;color:var(--muted);font-size:14px">Немає вибраних проєктів.<br>Позначте проєкти як "На головній" в адмінці.</div>`;
+    } else {
+      worksGrid.innerHTML = featured.map((p, i) => `
+        <div class="wcard" onclick="openCaseFromFirebase('${p.id}')">
+          <img class="wcard-img" src="${p.img}" alt="${p.title}">
+          <div class="wcard-overlay">
+            <div class="wcard-tag">${p.catLabel || p.cat}</div>
+            <div class="wcard-title">${p.title}</div>
+          </div>
+          <div class="wcard-arrow">${ARR}</div>
+        </div>`).join('');
+    }
+  }
+
+  // ── Render projects grid ──
+  if (!grid) return;
   const loader = document.getElementById('pgrid-loading');
-  if(loader) loader.remove();
+  if (loader) loader.remove();
+  grid.querySelectorAll('.fb-pcard').forEach(el => el.remove());
 
-  // Remove old firebase cards
-  grid.querySelectorAll('.fb-pcard').forEach(el=>el.remove());
-
-  if(!projects.length) return;
+  const visible = projects.filter(p => p.published !== false);
+  if (!visible.length) return;
 
   const frag = document.createDocumentFragment();
-  projects.forEach(p=>{
-    const tags=(p.tags||'').split(',').map(t=>`<span class="pcard-tag">${t.trim()}</span>`).join('');
-    const div=document.createElement('div');
-    div.className='pcard fb-pcard';
-    div.dataset.cat=p.cat;
-    div.dataset.plat=p.plat;
-    div.onclick=()=>openCaseFromFirebase(p.id);
-    div.innerHTML=`
+  const PLAT_ICONS = {
+    desktop:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`,
+    mobile:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,
+    both:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="14" height="10" rx="1"/><rect x="16" y="9" width="6" height="7" rx="1"/></svg>`
+  };
+  const PLAT_LABELS = {desktop:'Десктоп',mobile:'Мобільна',both:'Обидві'};
+
+  visible.forEach(p => {
+    const tags = (p.tags||'').split(',').map(t=>`<span class="pcard-tag">${t.trim()}</span>`).join('');
+    const div = document.createElement('div');
+    div.className = 'pcard fb-pcard';
+    div.dataset.cat = p.cat;
+    div.dataset.plat = p.plat;
+    div.onclick = () => openCaseFromFirebase(p.id);
+    div.innerHTML = `
       <div class="pcard-img-wrap">
         <img class="pcard-img" src="${p.img}" alt="${p.title}">
         <div class="pcard-badge">${PLAT_ICONS[p.plat]||''}${PLAT_LABELS[p.plat]||p.plat}</div>
-        <div class="pcard-arr">${ARR_SVG}</div>
+        <div class="pcard-arr">${ARR}</div>
         <div class="pcard-ov">
           <div class="pcard-cat">${p.catLabel||p.cat}</div>
           <div class="pcard-title">${p.title}</div>
@@ -3515,31 +3530,13 @@ function renderFirebaseProjects(projects){
     frag.appendChild(div);
   });
 
-  // Insert before pgrid-empty
   const empty = grid.querySelector('.pgrid-empty');
-  if(empty) grid.insertBefore(frag, empty);
+  if (empty) grid.insertBefore(frag, empty);
   else grid.appendChild(frag);
 
-  // Update counter
   const total = document.getElementById('proj-total');
-  if(total) total.textContent = projects.length;
-
-  // Re-run filter
-  if(typeof runFilter==='function') runFilter();
-
-  // Featured on home works grid
-  const wg = document.querySelector('.works-grid');
-  if(wg){
-    wg.querySelectorAll('.fb-wcard').forEach(el=>el.remove());
-    projects.filter(p=>p.featured==='1'||p.featured===true).forEach(p=>{
-      const div=document.createElement('div');
-      div.className='wcard fb-wcard';
-      div.style.cursor='pointer';
-      div.onclick=()=>openCaseFromFirebase(p.id);
-      div.innerHTML=`<img class="wcard-img" src="${p.img}" alt="${p.title}"><div class="wcard-overlay"><div class="wcard-tag">${p.catLabel||p.cat}</div><div class="wcard-title">${p.title}</div></div><div class="wcard-arrow">${ARR_SVG}</div>`;
-      wg.appendChild(div);
-    });
-  }
+  if (total) total.textContent = visible.length;
+  if (typeof runFilter === 'function') runFilter();
 }
 
 function initFirebaseLoader(){
