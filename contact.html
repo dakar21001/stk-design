@@ -72,12 +72,8 @@
 
         <!-- Права колонка: форма -->
         <div class="contact__form-wrap">
-          <!-- action поки заглушка; підключимо Web3Forms→Telegram далі -->
-          <form class="form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
-            <!-- прихований ключ Web3Forms (додамо реальний при підключенні) -->
-            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
-            <input type="hidden" name="subject" value="Нова заявка з сайту ST.K Design" />
-            <input type="hidden" name="from_name" value="ST.K Design" />
+          <!-- Форма шле дані на Cloudflare Worker → Telegram -->
+          <form class="form" id="contactForm" action="https://stk-contact.staskozumic.workers.dev" method="POST" novalidate>
             <!-- honeypot проти ботів (людина не бачить) -->
             <input type="checkbox" name="botcheck" tabindex="-1" style="display:none" aria-hidden="true" />
 
@@ -261,17 +257,7 @@
         // honeypot: якщо заповнений — це бот, тихо ігноруємо
         if (form.botcheck && form.botcheck.checked) return;
 
-        // якщо ключ Web3Forms ще не підключено — не шлемо, показуємо підказку
-        const key = form.access_key.value;
-        if (!key || key === 'YOUR_WEB3FORMS_KEY') {
-          statusErr.querySelector('div').innerHTML =
-            '<strong>Форма ще не підключена.</strong> Треба додати ключ Web3Forms — зробимо на наступному кроці.';
-          statusErr.classList.add('show');
-          statusErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          return;
-        }
-
-        // відправка
+        // відправка на Cloudflare Worker → Telegram
         submitBtn.classList.add('is-loading');
         try {
           const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
