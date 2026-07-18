@@ -1045,7 +1045,7 @@
 
     /* Form */
     .form { display: flex; flex-direction: column; gap: var(--sp-4); }
-    .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
+    .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); align-items: start; }
     .field { display: flex; flex-direction: column; gap: 0.5rem; position: relative; }
     .field label {
       font-size: 0.85rem; color: var(--text); font-weight: 500;
