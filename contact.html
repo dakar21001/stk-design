@@ -84,9 +84,28 @@
                 <span class="field__error" data-error>Вкажіть ім'я</span>
               </div>
               <div class="field" data-field>
-                <label for="contact">Email або телефон <span class="req" aria-hidden="true">*</span></label>
-                <input type="text" id="contact" name="contact" placeholder="hello@company.com" required />
-                <span class="field__error" data-error>Вкажіть контакт для зв'язку</span>
+                <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" placeholder="hello@company.com" required autocomplete="email" inputmode="email" />
+                <span class="field__error" data-error>Вкажіть коректний email</span>
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div class="field" data-field>
+                <label for="phone">Телефон <span class="req" aria-hidden="true">*</span></label>
+                <input type="tel" id="phone" name="phone" placeholder="+380 67 123 45 67" required autocomplete="tel" inputmode="tel" />
+                <span class="field__error" data-error>Вкажіть коректний телефон</span>
+              </div>
+              <div class="field" data-field>
+                <label for="messenger">Месенджер <span class="opt">(за бажанням)</span></label>
+                <div class="field__combo">
+                  <select id="messengerType" name="messenger_type" class="field__combo-select" aria-label="Тип месенджера">
+                    <option>Telegram</option>
+                    <option>Viber</option>
+                  </select>
+                  <input type="text" id="messenger" name="messenger" placeholder="@нік або номер" class="field__combo-input" autocomplete="off" />
+                </div>
+                <span class="field__error" data-error></span>
               </div>
             </div>
 
@@ -220,13 +239,10 @@
         let ok = true;
         const val = input.value.trim();
         if (input.hasAttribute('required') && !val) ok = false;
-        // спец-перевірка для контакту: email АБО телефон
-        if (input.id === 'contact' && val) ok = isEmail(val) || isPhone(val);
+        // спец-перевірки за форматом
+        if (input.id === 'email' && val) ok = isEmail(val);
+        if (input.id === 'phone' && val) ok = isPhone(val);
         field.classList.toggle('is-invalid', !ok);
-        if (input.id === 'contact') {
-          const err = field.querySelector('[data-error]');
-          err.textContent = !val ? "Вкажіть контакт для зв'язку" : "Вкажіть коректний email або телефон";
-        }
         return ok;
       };
 
