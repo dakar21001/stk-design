@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Базові мета; JS уточнить title/description під конкретний кейс -->
+  <title>Кейс — ST.K Design</title>
+  <meta name="description" id="metaDesc" content="Кейс ST.K Design — цифровий продукт від ідеї до релізу." />
+  <meta name="author" content="ST.K Design" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#F7F6F2" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="ST.K Design" />
+  <meta property="og:title" id="ogTitle" content="Кейс — ST.K Design" />
+  <meta property="og:description" id="ogDesc" content="Кейс ST.K Design." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти до вмісту</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <div class="wrap header__inner">
+      <a href="index.html" class="logo" aria-label="ST.K Design, головна">ST<b>.</b>K</a>
+      <nav class="nav" aria-label="Головна навігація">
+        <div class="nav__links">
+          <a href="index.html#services">Послуги</a>
+          <a href="projects.html">Роботи</a>
+          <a href="index.html#process">Процес</a>
+          <a href="index.html#about">Про нас</a>
+        </div>
+        <a href="index.html#contact" class="btn btn--primary">Обговорити проєкт<span class="btn__arrow" aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Вміст рендериться з cases.js за slug з URL -->
+    <div id="caseRoot"></div>
+
+    <!-- Наступний кейс (заповнюється з JS) -->
+    <section class="cp__next wrap" id="nextCase" hidden>
+      <div class="cp__next-label">Наступний проєкт</div>
+      <a class="cp__next-link" id="nextLink" href="#">
+        <span class="cp__next-title" id="nextTitle"></span>
+        <span class="cp__next-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </a>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta wrap" id="contact" aria-labelledby="cta-title">
+      <h2 class="cta__title" id="cta-title">Хочете такий самий <em>результат</em>?</h2>
+      <p class="cta__lead">Розкажіть про завдання — повернемось із планом і оцінкою впродовж дня.</p>
+      <div class="cta__actions">
+        <a href="index.html#contact" class="btn btn--primary" data-magnetic>Обговорити проєкт<span class="btn__arrow" aria-hidden="true">→</span></a>
+        <a href="projects.html" class="btn btn--ghost">Усі проєкти</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="logo">ST<b>.</b>K</div>
+          <p>Digital-агенція повного циклу. Проєктуємо та розробляємо продукти, якими користуються щодня.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Послуги</h4>
+          <ul>
+            <li><a href="index.html#services">UX/UI Design</a></li>
+            <li><a href="index.html#services">Mobile Apps</a></li>
+            <li><a href="index.html#services">Web Applications</a></li>
+            <li><a href="index.html#services">Branding</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Компанія</h4>
+          <ul>
+            <li><a href="index.html#about">Про нас</a></li>
+            <li><a href="projects.html">Роботи</a></li>
+            <li><a href="index.html#process">Процес</a></li>
+            <li><a href="#">Вакансії</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Контакти</h4>
+          <ul>
+            <li><a href="mailto:hello@stkdesign.com">hello@stkdesign.com</a></li>
+            <li><a href="tel:+380000000000">+38 (000) 000-00-00</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 ST.K Design. Усі права захищені.</span>
+        <div class="footer__social">
+          <a href="https://behance.net/stkdesign" aria-label="Behance" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h5a2.5 2.5 0 010 5H3zM3 13h5.5a2.5 2.5 0 010 5H3zM15 9h6M14 14h7a3.5 3.5 0 00-7 0z"/></svg></a>
+          <a href="https://dribbble.com/stkdesign" aria-label="Dribbble" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M8 3.5c4 5 5.5 9 6 17M21.5 10c-6-1-12 0-17.5 4M2.5 14c6-3 13-2 18 3"/></svg></a>
+          <a href="https://linkedin.com/company/stkdesign" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9h3v11H4zM5.5 4a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM10 9h3v1.5c.5-1 2-2 3.5-2 3 0 3.5 2 3.5 4.5V20h-3v-6c0-1.5-.5-2.5-2-2.5s-2 1-2 2.5v6h-3z"/></svg></a>
+        </div>
+        <div><a href="#">Політика конфіденційності</a> · <a href="#">Умови</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="cases.js"></script>
+  <script>
+    (function () {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* --- Sticky header + progress --- */
+      const header = document.getElementById('header');
+      const onH = () => header.classList.toggle('is-stuck', window.scrollY > 24);
+      onH(); window.addEventListener('scroll', onH, { passive: true });
+      const progress = document.getElementById('progress');
+      window.addEventListener('scroll', () => {
+        const h = document.documentElement;
+        progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+      }, { passive: true });
+
+      /* --- Reveal --- */
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+      /* --- slug з URL --- */
+      const params = new URLSearchParams(location.search);
+      const slug = params.get('slug');
+      const root = document.getElementById('caseRoot');
+
+      window.STK.loadCases().then(() => {
+        const c = slug ? window.STK.getBySlug(slug) : null;
+
+        if (!c) {
+          // Кейс не знайдено (невірний slug або видалений в адмінці)
+          root.innerHTML = `
+            <section class="cp__notfound wrap">
+              <h1>Кейс не знайдено</h1>
+              <p>Можливо, посилання застаріло або проєкт більше не в портфоліо.</p>
+              <a href="projects.html" class="btn btn--primary">До всіх проєктів<span class="btn__arrow" aria-hidden="true">→</span></a>
+            </section>`;
+          document.getElementById('nextCase').hidden = true;
+          document.title = 'Кейс не знайдено — ST.K Design';
+          return;
+        }
+
+        // Рендер сторінки
+        root.innerHTML = window.STK.renderCasePage(c);
+
+        // SEO / соцмережі — під конкретний кейс
+        document.title = `${c.title} — кейс ST.K Design`;
+        const setMeta = (id, val) => { const el = document.getElementById(id); if (el) el.setAttribute('content', val); };
+        setMeta('metaDesc', c.desc);
+        setMeta('ogTitle', `${c.title} — ST.K Design`);
+        setMeta('ogDesc', c.desc);
+
+        // reveal на нових елементах
+        root.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+        // Наступний кейс
+        const next = window.STK.getNext(slug);
+        if (next) {
+          const box = document.getElementById('nextCase');
+          document.getElementById('nextLink').href = `case.html?slug=${next.slug}`;
+          document.getElementById('nextTitle').textContent = next.title;
+          box.hidden = false;
+          io.observe(box);
+        }
+
+        // Magnetic (після рендеру)
+        if (!reduced) {
+          document.querySelectorAll('[data-magnetic]').forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+              const r = btn.getBoundingClientRect();
+              btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*0.25}px, ${(e.clientY-r.top-r.height/2)*0.35}px)`;
+            });
+            btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+          });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

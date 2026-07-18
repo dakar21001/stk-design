@@ -38,7 +38,31 @@
         { num: '+38%', label: 'утримання за 90 днів' },
         { num: '4.9', label: 'рейтинг у сторах' }
       ],
-      featured: true, hue: 226
+      featured: true, hue: 226,
+      // — Розширені поля для сторінки кейса (усі опціональні) —
+      subtitle: 'Необанк, який любить онбордити за три хвилини',
+      client: 'Northwind Financial',
+      role: ['Product Discovery', 'UX/UI Design', 'Mobile Development'],
+      duration: '7 місяців',
+      liveUrl: '',
+      overview: {
+        challenge: 'Northwind виходив на переповнений ринок необанків. Треба було не просто «ще один банк у телефоні», а продукт, який проходить онбординг швидше за конкурентів і не лякає складністю — при цьому з повним набором фінансових функцій під капотом.',
+        solution: 'Ми провели Discovery, зібрали дизайн-систему на 200+ компонентів і побудували застосунок на React Native, щоб паралельно закрити iOS та Android. Онбординг скоротили до трьох екранів, платежі звели до одного тапу, а складні операції сховали за прогресивним розкриттям.'
+      },
+      results: [
+        { num: '+38%', label: 'утримання за 90 днів', note: 'проти галузевого бенчмарку для необанків' },
+        { num: '4.9', label: 'рейтинг у App Store та Google Play', note: 'понад 12 000 оцінок за перший рік' },
+        { num: '3 хв', label: 'середній час онбордингу', note: 'від встановлення до першої операції' }
+      ],
+      gallery: [
+        { hue: 226, alt: 'Екран онбордингу Northwind Banking' },
+        { hue: 232, alt: 'Головний екран із балансом і швидкими діями' },
+        { hue: 218, alt: 'Екран платежу в один тап' }
+      ],
+      testimonial: {
+        text: 'ST.K зібрали наш застосунок швидше, ніж ми планували лише дизайн. Рідкісний випадок, коли підрядник думає про продукт, а не про години.',
+        name: 'Ірина Коваль', role: 'Product Lead, Northwind'
+      }
     },
     {
       id: 'orb-02', slug: 'orbital-analytics',
@@ -155,7 +179,7 @@
         <div class="case__media">
           <span class="case__index">${idx}</span>
           ${mediaTag(c)}
-          <a class="case__view" href="/work/${c.slug}" aria-label="Відкрити кейс ${c.title}">
+          <a class="case__view" href="case.html?slug=${c.slug}" aria-label="Відкрити кейс ${c.title}">
             Дивитися кейс
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
           </a>
@@ -177,7 +201,7 @@
     ).join('');
     return `
       <article class="pcard" role="listitem" data-reveal data-filters="${c.filters.join('|')}">
-        <a class="pcard__link" href="/work/${c.slug}" aria-label="Відкрити кейс ${c.title}">
+        <a class="pcard__link" href="case.html?slug=${c.slug}" aria-label="Відкрити кейс ${c.title}">
           <div class="pcard__media">
             ${mediaTag(c)}
             <span class="pcard__year">${c.year}</span>
@@ -199,14 +223,138 @@
     return ['Усі', ...Array.from(set)];
   };
 
+  // Знайти кейс за slug (для сторінки кейса).
+  const getBySlug = (slug) => STK_CASES.find(c => c.slug === slug) || null;
+
+  // Наступний кейс у списку (циклічно) — для навігації внизу сторінки кейса.
+  const getNext = (slug) => {
+    const i = STK_CASES.findIndex(c => c.slug === slug);
+    if (i === -1) return null;
+    return STK_CASES[(i + 1) % STK_CASES.length];
+  };
+
+  // Плейсхолдер для галереї (вертикальний/квадратний варіант).
+  const galleryPlaceholder = (hue, title) => {
+    const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 700' width='900' height='700'>
+      <defs>
+        <linearGradient id='gg' x1='0' y1='0' x2='1' y2='1'>
+          <stop offset='0' stop-color='hsl(${hue} 68% 56%)'/>
+          <stop offset='1' stop-color='hsl(${hue + 16} 62% 40%)'/>
+        </linearGradient>
+        <pattern id='gd' width='30' height='30' patternUnits='userSpaceOnUse'>
+          <circle cx='2' cy='2' r='1.3' fill='rgba(255,255,255,0.2)'/>
+        </pattern>
+      </defs>
+      <rect width='900' height='700' fill='url(#gg)'/>
+      <rect width='900' height='700' fill='url(#gd)'/>
+    </svg>`;
+    return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+  };
+
+  // Повний рендер сторінки кейса. Усі розширені поля опціональні —
+  // якщо адмін не заповнив блок, він просто не рендериться (сторінка не ламається).
+  const renderCasePage = (c) => {
+    const esc = s => String(s == null ? '' : s);
+    const cover = c.cover
+      ? `<img src="${c.cover}" alt="${esc(c.coverAlt)}" width="1200" height="750" fetchpriority="high">`
+      : `<img src="${placeholderSVG(c)}" alt="${esc(c.coverAlt)}" width="1200" height="750" fetchpriority="high">`;
+
+    const facts = [
+      c.client   ? `<div class="cp__fact"><dt>Клієнт</dt><dd>${esc(c.client)}</dd></div>` : '',
+      c.year     ? `<div class="cp__fact"><dt>Рік</dt><dd>${esc(c.year)}</dd></div>` : '',
+      c.duration ? `<div class="cp__fact"><dt>Тривалість</dt><dd>${esc(c.duration)}</dd></div>` : '',
+      (c.role && c.role.length) ? `<div class="cp__fact"><dt>Роль</dt><dd>${c.role.join(', ')}</dd></div>` : ''
+    ].join('');
+
+    const overview = c.overview ? `
+      <section class="cp__overview" data-reveal>
+        <div class="cp__ov-col">
+          <h2 class="cp__h2">Завдання</h2>
+          <p>${esc(c.overview.challenge)}</p>
+        </div>
+        <div class="cp__ov-col">
+          <h2 class="cp__h2">Рішення</h2>
+          <p>${esc(c.overview.solution)}</p>
+        </div>
+      </section>` : '';
+
+    const results = (c.results && c.results.length) ? `
+      <section class="cp__results" data-reveal>
+        <h2 class="cp__h2">Результати</h2>
+        <div class="cp__results-grid">
+          ${c.results.map(r => `
+            <div class="cp__result">
+              <div class="cp__result-num">${esc(r.num)}</div>
+              <div class="cp__result-label">${esc(r.label)}</div>
+              ${r.note ? `<p class="cp__result-note">${esc(r.note)}</p>` : ''}
+            </div>`).join('')}
+        </div>
+      </section>` : '';
+
+    const gallery = (c.gallery && c.gallery.length) ? `
+      <section class="cp__gallery">
+        ${c.gallery.map(g => `
+          <figure class="cp__shot" data-reveal>
+            <img src="${g.src ? g.src : galleryPlaceholder(g.hue != null ? g.hue : c.hue, c.title)}"
+                 alt="${esc(g.alt)}" loading="lazy" decoding="async" width="900" height="700">
+          </figure>`).join('')}
+      </section>` : '';
+
+    const testimonial = c.testimonial ? `
+      <section class="cp__quote" data-reveal>
+        <div class="quote__mark" aria-hidden="true">“</div>
+        <blockquote class="cp__quote-text">${esc(c.testimonial.text)}</blockquote>
+        <figcaption class="cp__quote-foot">
+          <span class="cp__quote-name">${esc(c.testimonial.name)}</span>
+          <span class="cp__quote-role">${esc(c.testimonial.role)}</span>
+        </figcaption>
+      </section>` : '';
+
+    const liveBtn = c.liveUrl
+      ? `<a href="${esc(c.liveUrl)}" class="btn btn--ghost" target="_blank" rel="noopener">Дивитися наживо<span class="btn__arrow" aria-hidden="true">↗</span></a>`
+      : '';
+
+    const tags = (c.tags || []).map(t => `<span class="case__tag">${esc(t)}</span>`).join('');
+
+    return `
+      <section class="cp__hero wrap">
+        <nav class="breadcrumb" aria-label="Хлібні крихти">
+          <a href="index.html">Головна</a> / <a href="projects.html">Проєкти</a> / <span>${esc(c.title)}</span>
+        </nav>
+        <div class="cp__cat">${esc(c.category)}</div>
+        <h1 class="cp__title">${esc(c.title)}</h1>
+        ${c.subtitle ? `<p class="cp__subtitle">${esc(c.subtitle)}</p>` : ''}
+        ${liveBtn ? `<div class="cp__hero-actions">${liveBtn}</div>` : ''}
+      </section>
+
+      <section class="cp__cover wrap" data-reveal>
+        <div class="cp__cover-media">${cover}</div>
+      </section>
+
+      ${facts ? `<section class="cp__facts wrap" data-reveal><dl class="cp__facts-grid">${facts}</dl>${tags ? `<div class="cp__tags case__tags">${tags}</div>` : ''}</section>` : ''}
+
+      <div class="wrap">
+        ${overview}
+        ${results}
+      </div>
+
+      ${gallery ? `<div class="wrap">${gallery}</div>` : ''}
+
+      ${testimonial ? `<div class="wrap">${testimonial}</div>` : ''}
+    `;
+  };
+
   // Публічний інтерфейс. Адмінка перевизначає loadCases на fetch.
   window.STK = {
     cases: STK_CASES,
     featured: () => STK_CASES.filter(c => c.featured),
     loadCases: async () => STK_CASES, // ← замінити на fetch('/api/cases')
     getFilters,
+    getBySlug,
+    getNext,
     placeholderSVG,
     renderCaseLarge,
-    renderCaseGrid
+    renderCaseGrid,
+    renderCasePage
   };
 })();
