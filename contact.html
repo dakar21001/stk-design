@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Контакти — обговорити проєкт · ST.K Design</title>
+  <meta name="description" content="Розкажіть про завдання — повернемось із планом і оцінкою впродовж дня. Зв'яжіться зі ST.K Design через форму, пошту або телефон." />
+  <meta name="author" content="ST.K Design" />
+  <link rel="canonical" href="https://stkdesign.com/contact" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#F7F6F2" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:site_name" content="ST.K Design" />
+  <meta property="og:title" content="Контакти — ST.K Design" />
+  <meta property="og:description" content="Розкажіть про завдання — повернемось із планом і оцінкою впродовж дня." />
+  <meta property="og:url" content="https://stkdesign.com/contact" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" /></noscript>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти до вмісту</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <div class="wrap header__inner">
+      <a href="index.html" class="logo" aria-label="ST.K Design, головна">ST<b>.</b>K</a>
+      <nav class="nav" aria-label="Головна навігація">
+        <div class="nav__links">
+          <a href="index.html#services">Послуги</a>
+          <a href="projects.html">Роботи</a>
+          <a href="index.html#process">Процес</a>
+          <a href="index.html#about">Про нас</a>
+        </div>
+        <a href="contact.html" class="btn btn--primary">Обговорити проєкт<span class="btn__arrow" aria-hidden="true">→</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="contact wrap" aria-labelledby="contact-title">
+      <div class="contact__grid">
+        <!-- Ліва колонка: інтро + прямі контакти -->
+        <div class="contact__intro">
+          <nav class="breadcrumb" aria-label="Хлібні крихти">
+            <a href="index.html">Головна</a> / <span>Контакти</span>
+          </nav>
+          <h1 class="contact__title" id="contact-title">Обговорімо ваш проєкт</h1>
+          <p class="contact__lead">Розкажіть, що потрібно — повернемось із планом і орієнтовною оцінкою впродовж робочого дня. Без зобов'язань.</p>
+
+          <dl class="contact__direct">
+            <div class="contact__direct-item">
+              <dt>Пошта</dt>
+              <dd><a href="mailto:hello@stkdesign.com">hello@stkdesign.com</a></dd>
+            </div>
+            <div class="contact__direct-item">
+              <dt>Телефон</dt>
+              <dd><a href="tel:+380000000000">+38 (000) 000-00-00</a></dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Права колонка: форма -->
+        <div class="contact__form-wrap">
+          <!-- action поки заглушка; підключимо Web3Forms→Telegram далі -->
+          <form class="form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+            <!-- прихований ключ Web3Forms (додамо реальний при підключенні) -->
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+            <input type="hidden" name="subject" value="Нова заявка з сайту ST.K Design" />
+            <input type="hidden" name="from_name" value="ST.K Design" />
+            <!-- honeypot проти ботів (людина не бачить) -->
+            <input type="checkbox" name="botcheck" tabindex="-1" style="display:none" aria-hidden="true" />
+
+            <div class="form__row">
+              <div class="field" data-field>
+                <label for="name">Ім'я <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" placeholder="Як до вас звертатися" required autocomplete="name" />
+                <span class="field__error" data-error>Вкажіть ім'я</span>
+              </div>
+              <div class="field" data-field>
+                <label for="contact">Email або телефон <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="contact" name="contact" placeholder="hello@company.com" required />
+                <span class="field__error" data-error>Вкажіть контакт для зв'язку</span>
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div class="field field--select" data-field>
+                <label for="type">Тип проєкту</label>
+                <select id="type" name="type">
+                  <option value="">Оберіть напрям</option>
+                  <option>UX/UI Design</option>
+                  <option>Мобільний застосунок</option>
+                  <option>Веб-застосунок</option>
+                  <option>Корпоративний сайт</option>
+                  <option>E-commerce</option>
+                  <option>Брендинг</option>
+                  <option>Ще не визначився</option>
+                </select>
+              </div>
+              <div class="field field--select" data-field>
+                <label for="budget">Орієнтовний бюджет</label>
+                <select id="budget" name="budget">
+                  <option value="">Не вказувати</option>
+                  <option>до $5 000</option>
+                  <option>$5 000 – $15 000</option>
+                  <option>$15 000 – $50 000</option>
+                  <option>$50 000+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field" data-field>
+              <label for="message">Про проєкт <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" placeholder="Кілька речень про завдання, цілі, терміни — усе, що вважаєте важливим" required></textarea>
+              <span class="field__error" data-error>Розкажіть коротко про проєкт</span>
+            </div>
+
+            <!-- банер результату -->
+            <div class="form__status form__status--ok" id="statusOk" role="status">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              <div><strong>Дякуємо!</strong> Заявку отримано — повернемось до вас упродовж робочого дня.</div>
+            </div>
+            <div class="form__status form__status--err" id="statusErr" role="alert">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v5M12 16h.01M12 3l9 16H3z"/></svg>
+              <div><strong>Не вдалося надіслати.</strong> Спробуйте ще раз або напишіть на <a href="mailto:hello@stkdesign.com">hello@stkdesign.com</a>.</div>
+            </div>
+
+            <div class="form__foot">
+              <button type="submit" class="btn btn--primary form__submit" id="submitBtn">
+                <span class="spinner" aria-hidden="true"></span>
+                <span class="btn__label">Надіслати заявку</span>
+                <span class="btn__arrow" aria-hidden="true">→</span>
+              </button>
+              <span class="form__note">Натискаючи, ви погоджуєтесь з обробкою даних.</span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="logo">ST<b>.</b>K</div>
+          <p>Digital-агенція повного циклу. Проєктуємо та розробляємо продукти, якими користуються щодня.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Послуги</h4>
+          <ul>
+            <li><a href="index.html#services">UX/UI Design</a></li>
+            <li><a href="index.html#services">Mobile Apps</a></li>
+            <li><a href="index.html#services">Web Applications</a></li>
+            <li><a href="index.html#services">Branding</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Компанія</h4>
+          <ul>
+            <li><a href="index.html#about">Про нас</a></li>
+            <li><a href="projects.html">Роботи</a></li>
+            <li><a href="index.html#process">Процес</a></li>
+            <li><a href="#">Вакансії</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Контакти</h4>
+          <ul>
+            <li><a href="mailto:hello@stkdesign.com">hello@stkdesign.com</a></li>
+            <li><a href="tel:+380000000000">+38 (000) 000-00-00</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 ST.K Design. Усі права захищені.</span>
+        <div class="footer__social">
+          <a href="https://behance.net/stkdesign" aria-label="Behance" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h5a2.5 2.5 0 010 5H3zM3 13h5.5a2.5 2.5 0 010 5H3zM15 9h6M14 14h7a3.5 3.5 0 00-7 0z"/></svg></a>
+          <a href="https://dribbble.com/stkdesign" aria-label="Dribbble" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M8 3.5c4 5 5.5 9 6 17M21.5 10c-6-1-12 0-17.5 4M2.5 14c6-3 13-2 18 3"/></svg></a>
+          <a href="https://linkedin.com/company/stkdesign" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9h3v11H4zM5.5 4a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM10 9h3v1.5c.5-1 2-2 3.5-2 3 0 3.5 2 3.5 4.5V20h-3v-6c0-1.5-.5-2.5-2-2.5s-2 1-2 2.5v6h-3z"/></svg></a>
+        </div>
+        <div><a href="#">Політика конфіденційності</a> · <a href="#">Умови</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      /* --- Sticky header + progress --- */
+      const header = document.getElementById('header');
+      const onH = () => header.classList.toggle('is-stuck', window.scrollY > 24);
+      onH(); window.addEventListener('scroll', onH, { passive: true });
+      const progress = document.getElementById('progress');
+      window.addEventListener('scroll', () => {
+        const h = document.documentElement;
+        progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+      }, { passive: true });
+
+      /* --- Form validation + submit --- */
+      const form = document.getElementById('contactForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const statusOk = document.getElementById('statusOk');
+      const statusErr = document.getElementById('statusErr');
+
+      const isEmail = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      const isPhone = v => /^[+\d][\d\s()\-]{6,}$/.test(v);
+
+      // валідація одного поля
+      const validateField = (input) => {
+        const field = input.closest('[data-field]');
+        let ok = true;
+        const val = input.value.trim();
+        if (input.hasAttribute('required') && !val) ok = false;
+        // спец-перевірка для контакту: email АБО телефон
+        if (input.id === 'contact' && val) ok = isEmail(val) || isPhone(val);
+        field.classList.toggle('is-invalid', !ok);
+        if (input.id === 'contact') {
+          const err = field.querySelector('[data-error]');
+          err.textContent = !val ? "Вкажіть контакт для зв'язку" : "Вкажіть коректний email або телефон";
+        }
+        return ok;
+      };
+
+      // прибирати помилку під час набору
+      form.querySelectorAll('input, textarea').forEach(el => {
+        el.addEventListener('input', () => {
+          const field = el.closest('[data-field]');
+          if (field && field.classList.contains('is-invalid')) validateField(el);
+        });
+        el.addEventListener('blur', () => { if (el.value.trim() || el.hasAttribute('required')) validateField(el); });
+      });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        statusOk.classList.remove('show');
+        statusErr.classList.remove('show');
+
+        // валідація обов'язкових
+        const required = form.querySelectorAll('[required]');
+        let allOk = true;
+        required.forEach(el => { if (!validateField(el)) allOk = false; });
+        if (!allOk) {
+          const firstErr = form.querySelector('.is-invalid input, .is-invalid textarea');
+          if (firstErr) firstErr.focus();
+          return;
+        }
+
+        // honeypot: якщо заповнений — це бот, тихо ігноруємо
+        if (form.botcheck && form.botcheck.checked) return;
+
+        // якщо ключ Web3Forms ще не підключено — не шлемо, показуємо підказку
+        const key = form.access_key.value;
+        if (!key || key === 'YOUR_WEB3FORMS_KEY') {
+          statusErr.querySelector('div').innerHTML =
+            '<strong>Форма ще не підключена.</strong> Треба додати ключ Web3Forms — зробимо на наступному кроці.';
+          statusErr.classList.add('show');
+          statusErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
+
+        // відправка
+        submitBtn.classList.add('is-loading');
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+          const data = await res.json().catch(() => ({}));
+          if (res.ok && data.success !== false) {
+            form.reset();
+            statusOk.classList.add('show');
+            statusOk.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            throw new Error('bad response');
+          }
+        } catch (err) {
+          statusErr.classList.add('show');
+          statusErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } finally {
+          submitBtn.classList.remove('is-loading');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
