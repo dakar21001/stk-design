@@ -191,7 +191,7 @@
         grid.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
 
         // фільтр із даних
-        const filters = window.STK.getFilters();
+        const filters = window.STK.getFilters(all);
         filterBar.innerHTML = filters.map((f, i) =>
           `<button class="filter__btn${i === 0 ? ' is-active' : ''}" role="tab" aria-selected="${i === 0}" data-filter="${f}">${f}</button>`
         ).join('');

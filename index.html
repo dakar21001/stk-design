@@ -538,8 +538,8 @@
         });
       }
 
-      /* --- Testimonials carousel (CMS-ready data) --- */
-      const STK_QUOTES = [
+      /* --- Testimonials carousel (дані з Sanity, fallback — вбудовані) --- */
+      const FALLBACK_QUOTES = [
         { text: 'ST.K зібрали наш застосунок швидше, ніж ми планували лише дизайн. Рідкісний випадок, коли підрядник думає про продукт, а не про години.', name: 'Ірина Коваль', role: 'Product Lead, Northwind' },
         { text: 'Дизайн-система, яку вони віддали, досі тримає весь продукт. Ми масштабуємось без болю — і це найкраща інвестиція за рік.', name: 'Андрій Мельник', role: 'CTO, Orbital' },
         { text: 'Новий чекаут окупив увесь проєкт за два місяці. Команда, яка справді розуміє, що таке конверсія, а не просто «красиво».', name: 'Олена Гнатюк', role: 'Founder, Sifted' }
@@ -550,21 +550,28 @@
         const qName = qEl.querySelector('.quote__name');
         const qRole = qEl.querySelector('.quote__role');
         const qCount = document.getElementById('quoteCount');
+        let QUOTES = FALLBACK_QUOTES;
         let qi = 0;
         const show = (i) => {
-          qi = (i + STK_QUOTES.length) % STK_QUOTES.length;
-          const q = STK_QUOTES[qi];
+          qi = (i + QUOTES.length) % QUOTES.length;
+          const q = QUOTES[qi];
           qEl.classList.add('is-fading');
           setTimeout(() => {
             qText.textContent = q.text;
             qName.textContent = q.name;
             qRole.textContent = q.role;
-            qCount.textContent = String(qi + 1).padStart(2, '0') + ' / ' + String(STK_QUOTES.length).padStart(2, '0');
+            qCount.textContent = String(qi + 1).padStart(2, '0') + ' / ' + String(QUOTES.length).padStart(2, '0');
             qEl.classList.remove('is-fading');
           }, reduced ? 0 : 400);
         };
         document.getElementById('quoteNext').addEventListener('click', () => show(qi + 1));
         document.getElementById('quotePrev').addEventListener('click', () => show(qi - 1));
+        // підвантажуємо з Sanity; якщо є — замінюємо fallback
+        if (window.STK && window.STK.loadQuotes) {
+          window.STK.loadQuotes().then(qs => {
+            if (qs && qs.length) { QUOTES = qs; qi = 0; show(0); }
+          });
+        }
       }
 
       /* --- FAQ accordion --- */

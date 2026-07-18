@@ -216,23 +216,6 @@
       </article>`;
   };
 
-  // Унікальні категорії-фільтри з самих даних (нові з адмінки з'являться самі).
-  const getFilters = () => {
-    const set = new Set();
-    STK_CASES.forEach(c => c.filters.forEach(f => set.add(f)));
-    return ['Усі', ...Array.from(set)];
-  };
-
-  // Знайти кейс за slug (для сторінки кейса).
-  const getBySlug = (slug) => STK_CASES.find(c => c.slug === slug) || null;
-
-  // Наступний кейс у списку (циклічно) — для навігації внизу сторінки кейса.
-  const getNext = (slug) => {
-    const i = STK_CASES.findIndex(c => c.slug === slug);
-    if (i === -1) return null;
-    return STK_CASES[(i + 1) % STK_CASES.length];
-  };
-
   // Плейсхолдер для галереї (вертикальний/квадратний варіант).
   const galleryPlaceholder = (hue, title) => {
     const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 700' width='900' height='700'>
@@ -344,14 +327,125 @@
     `;
   };
 
-  // Публічний інтерфейс. Адмінка перевизначає loadCases на fetch.
+  // ============================================================
+  //  SANITY INTEGRATION
+  //  Дані живуть у Sanity Studio (адмін-панель). loadCases робить
+  //  запит до Sanity, перетворює відповідь у формат сайту й кешує.
+  //  Якщо Sanity недоступний — падаємо на вбудовані STK_CASES (fallback),
+  //  щоб сайт лишався робочим за будь-яких умов.
+  // ============================================================
+  const SANITY = {
+    projectId: 'aau1ytum',
+    dataset: 'production',
+    apiVersion: '2024-01-01'
+  };
+
+  // Побудова URL зображення Sanity з asset reference (_ref).
+  // Приклад _ref: "image-abc123-800x600-png"
+  const imageUrl = (ref) => {
+    if (!ref || typeof ref !== 'string') return '';
+    const [, id, dim, fmt] = ref.split('-');
+    return `https://cdn.sanity.io/images/${SANITY.projectId}/${SANITY.dataset}/${id}-${dim}.${fmt}`;
+  };
+
+  // GROQ-запит: беремо всі кейси, впорядковані за order.
+  const GROQ_CASES = encodeURIComponent(
+    '*[_type=="caseStudy"]|order(order asc){' +
+    'title,"slug":slug.current,category,filters,desc,' +
+    '"cover":cover.asset._ref,coverAlt,year,tags,metrics,featured,order,hue,' +
+    'subtitle,client,role,duration,liveUrl,overview,results,' +
+    '"gallery":gallery[]{"ref":asset._ref,alt},testimonial}'
+  );
+  const GROQ_QUOTES = encodeURIComponent(
+    '*[_type=="testimonial"]|order(order asc){text,name,role}'
+  );
+
+  const apiURL = (query) =>
+    `https://${SANITY.projectId}.api.sanity.io/v${SANITY.apiVersion}/data/query/${SANITY.dataset}?query=${query}`;
+
+  // Перетворення документа Sanity → формат, який очікує решта сайту.
+  const fromSanity = (d) => ({
+    id: d.slug,
+    slug: d.slug,
+    category: d.category || '',
+    filters: d.filters || [],
+    title: d.title || '',
+    desc: d.desc || '',
+    cover: d.cover ? imageUrl(d.cover) : '',   // порожньо → плейсхолдер
+    coverAlt: d.coverAlt || d.title || '',
+    year: d.year || '',
+    tags: d.tags || [],
+    metrics: d.metrics || [],
+    featured: !!d.featured,
+    hue: d.hue != null ? d.hue : 220,          // плейсхолдер поки нема фото
+    subtitle: d.subtitle,
+    client: d.client,
+    role: d.role,
+    duration: d.duration,
+    liveUrl: d.liveUrl,
+    overview: d.overview,
+    results: d.results,
+    gallery: (d.gallery || []).map(g => ({ src: g.ref ? imageUrl(g.ref) : '', alt: g.alt || '', hue: d.hue })),
+    testimonial: d.testimonial
+  });
+
+  // Кеш, щоб не робити запит на кожній сторінці повторно в межах сесії.
+  let _cache = null;
+  let _quotes = null;
+
+  const loadCases = async () => {
+    if (_cache) return _cache;
+    try {
+      const res = await fetch(apiURL(GROQ_CASES), { cache: 'no-store' });
+      if (!res.ok) throw new Error('Sanity ' + res.status);
+      const json = await res.json();
+      const items = (json.result || []).map(fromSanity);
+      if (!items.length) throw new Error('empty');
+      _cache = items;
+      return _cache;
+    } catch (e) {
+      console.warn('[STK] Sanity недоступний, fallback на вбудовані дані:', e.message);
+      _cache = STK_CASES;                       // graceful degradation
+      return _cache;
+    }
+  };
+
+  const loadQuotes = async () => {
+    if (_quotes) return _quotes;
+    try {
+      const res = await fetch(apiURL(GROQ_QUOTES), { cache: 'no-store' });
+      if (!res.ok) throw new Error('Sanity ' + res.status);
+      const json = await res.json();
+      _quotes = (json.result || []);
+      if (!_quotes.length) throw new Error('empty');
+      return _quotes;
+    } catch (e) {
+      _quotes = null;
+      return [];   // сторінка сама має fallback на вбудовані відгуки
+    }
+  };
+
+  // Хелпери тепер працюють з завантаженими даними (через loadCases).
+  const getFiltersFrom = (cases) => {
+    const set = new Set();
+    cases.forEach(c => (c.filters || []).forEach(f => set.add(f)));
+    return ['Усі', ...Array.from(set)];
+  };
+  const getBySlugFrom = (cases, slug) => cases.find(c => c.slug === slug) || null;
+  const getNextFrom = (cases, slug) => {
+    const i = cases.findIndex(c => c.slug === slug);
+    return i === -1 ? null : cases[(i + 1) % cases.length];
+  };
+
+  // Публічний інтерфейс.
   window.STK = {
-    cases: STK_CASES,
-    featured: () => STK_CASES.filter(c => c.featured),
-    loadCases: async () => STK_CASES, // ← замінити на fetch('/api/cases')
-    getFilters,
-    getBySlug,
-    getNext,
+    loadCases,
+    loadQuotes,
+    featured: async () => (await loadCases()).filter(c => c.featured),
+    // Хелпери приймають список кейсів (сторінки вже мають дані з loadCases).
+    getFilters: getFiltersFrom,
+    getBySlug: getBySlugFrom,
+    getNext: getNextFrom,
     placeholderSVG,
     renderCaseLarge,
     renderCaseGrid,

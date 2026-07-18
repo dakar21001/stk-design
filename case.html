@@ -141,8 +141,8 @@
       const slug = params.get('slug');
       const root = document.getElementById('caseRoot');
 
-      window.STK.loadCases().then(() => {
-        const c = slug ? window.STK.getBySlug(slug) : null;
+      window.STK.loadCases().then((all) => {
+        const c = slug ? window.STK.getBySlug(all, slug) : null;
 
         if (!c) {
           // Кейс не знайдено (невірний slug або видалений в адмінці)
@@ -171,7 +171,7 @@
         root.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
 
         // Наступний кейс
-        const next = window.STK.getNext(slug);
+        const next = window.STK.getNext(all, slug);
         if (next) {
           const box = document.getElementById('nextCase');
           document.getElementById('nextLink').href = `case.html?slug=${next.slug}`;
