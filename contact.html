@@ -98,12 +98,13 @@
               </div>
               <div class="field" data-field>
                 <label for="messenger">Месенджер <span class="opt">(за бажанням)</span></label>
-                <div class="field__combo">
-                  <select id="messengerType" name="messenger_type" class="field__combo-select" aria-label="Тип месенджера">
-                    <option>Telegram</option>
-                    <option>Viber</option>
-                  </select>
-                  <input type="text" id="messenger" name="messenger" placeholder="@нік або номер" class="field__combo-input" autocomplete="off" />
+                <div class="msg">
+                  <div class="msg__toggle" role="group" aria-label="Оберіть месенджер">
+                    <button type="button" class="msg__opt is-active" data-msg="Telegram" aria-pressed="true">Telegram</button>
+                    <button type="button" class="msg__opt" data-msg="Viber" aria-pressed="false">Viber</button>
+                  </div>
+                  <input type="text" id="messenger" name="messenger" placeholder="@нік або номер" class="msg__input" autocomplete="off" />
+                  <input type="hidden" name="messenger_type" id="messengerType" value="Telegram" />
                 </div>
                 <span class="field__error" data-error></span>
               </div>
@@ -223,6 +224,19 @@
         const h = document.documentElement;
         progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
       }, { passive: true });
+
+      /* --- Messenger pill toggle --- */
+      const msgType = document.getElementById('messengerType');
+      document.querySelectorAll('.msg__opt').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.msg__opt').forEach(b => {
+            const on = b === btn;
+            b.classList.toggle('is-active', on);
+            b.setAttribute('aria-pressed', on ? 'true' : 'false');
+          });
+          if (msgType) msgType.value = btn.dataset.msg;
+        });
+      });
 
       /* --- Form validation + submit --- */
       const form = document.getElementById('contactForm');

@@ -1118,40 +1118,19 @@
     /* Optional label marker */
     .field label .opt { color: var(--text-muted); font-weight: 400; font-size: 0.8rem; }
 
-    /* Messenger combo: type select + input in one control */
-    .field__combo { display: flex; gap: 0; width: 100%; max-width: 100%; }
-    .field .field__combo-select {
-      flex: 0 0 108px; width: 108px; min-width: 108px; max-width: 108px;
-      border-radius: 12px 0 0 12px; border-right: none;
-      padding-right: 2rem;
-      background: var(--bg-surface);
+    /* Messenger: pill toggle + input */
+    .msg { display: flex; flex-direction: column; gap: 0.6rem; }
+    .msg__toggle {
+      display: inline-flex; gap: 4px; padding: 4px;
+      background: var(--bg-surface); border: 1px solid var(--line);
+      border-radius: 100px; align-self: flex-start;
     }
-    .field .field__combo-input {
-      flex: 1 1 0; border-radius: 0 12px 12px 0; min-width: 0; width: 100%;
+    .msg__opt {
+      font-family: var(--font-body); font-size: 0.9rem; font-weight: 500;
+      padding: 0.5rem 1.1rem; border-radius: 100px;
+      border: none; background: transparent; color: var(--text-muted); cursor: pointer;
+      transition: background 0.3s var(--ease), color 0.3s var(--ease);
     }
-    .field__combo:focus-within .field__combo-select,
-    .field__combo:focus-within .field__combo-input {
-      border-color: var(--accent);
-    }
-    /* стрілка селекта в комбо */
-    .field__combo { position: relative; }
-    .field__combo::after {
-      content: ""; position: absolute; left: calc(108px - 1.3rem); top: 50%;
-      width: 8px; height: 8px; margin-top: -6px;
-      border-right: 2px solid var(--text-muted); border-bottom: 2px solid var(--text-muted);
-      transform: rotate(45deg); pointer-events: none;
-    }
-    @media (max-width: 560px) {
-      .field__combo-select { min-width: 96px; }
-      .field__combo::after { left: calc(96px - 1.3rem); }
-    }
-
-    /* Дуже вузькі екрани: комбо месенджера вертикально */
-    @media (max-width: 360px) {
-      .field__combo { flex-direction: column; gap: 0.5rem; }
-      .field .field__combo-select {
-        flex: none; width: 100%; max-width: 100%; border-radius: 12px; border-right: 1px solid var(--line);
-      }
-      .field .field__combo-input { border-radius: 12px; }
-      .field__combo::after { display: none; }
-    }
+    .msg__opt:hover { color: var(--text); }
+    .msg__opt.is-active { background: var(--accent); color: var(--on-accent); }
+    .msg__input { width: 100%; }
