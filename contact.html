@@ -111,7 +111,7 @@
               </div>
             </div>
 
-            <div class="form__row">
+            <div class="form__row form__row--single">
               <div class="field field--select" data-field>
                 <label for="budget">Орієнтовний бюджет</label>
                 <select id="budget" name="budget">
@@ -122,16 +122,17 @@
                   <option>$50 000+</option>
                 </select>
               </div>
-              <div class="field" data-field>
-                <label>Месенджер <span class="opt">(за бажанням)</span></label>
-                <div class="msg">
-                  <div class="msg__toggle" role="group" aria-label="Оберіть месенджер">
-                    <button type="button" class="msg__opt is-active" data-msg="Telegram" aria-pressed="true">Telegram</button>
-                    <button type="button" class="msg__opt" data-msg="Viber" aria-pressed="false">Viber</button>
-                  </div>
-                  <input type="text" id="messenger" name="messenger" placeholder="@нік або номер" class="msg__input" autocomplete="off" />
-                  <input type="hidden" name="messenger_type" id="messengerType" value="Telegram" />
+            </div>
+
+            <div class="field field--msg" data-field>
+              <label>Месенджер <span class="opt">(за бажанням)</span></label>
+              <div class="msg msg--row">
+                <div class="msg__toggle" role="group" aria-label="Оберіть месенджер">
+                  <button type="button" class="msg__opt is-active" data-msg="Telegram" aria-pressed="true">Telegram</button>
+                  <button type="button" class="msg__opt" data-msg="Viber" aria-pressed="false">Viber</button>
                 </div>
+                <input type="text" id="messenger" name="messenger" placeholder="@нік або номер" class="msg__input" autocomplete="off" />
+                <input type="hidden" name="messenger_type" id="messengerType" value="Telegram" />
               </div>
             </div>
 

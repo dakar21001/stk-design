@@ -1085,6 +1085,11 @@
     }
     .field.is-invalid .field__error { opacity: 1; transform: none; }
 
+    /* Поля-селекти без .field__error отримують такий самий нижній резерв
+       (висота рядка помилки ≈19px + gap 8px), щоб низи в парному ряду збігались. */
+    .field--select { padding-bottom: 27px; }
+    .field--select:has(.field__error) { padding-bottom: 0; }
+
     .form__foot { display: flex; align-items: center; gap: var(--sp-4); flex-wrap: wrap; margin-top: var(--sp-2); }
     .form__note { font-size: 0.85rem; color: var(--text-muted); }
     .form__submit { position: relative; min-width: 190px; }
@@ -1120,10 +1125,13 @@
 
     /* Messenger: pill toggle + input */
     .msg { display: flex; flex-direction: column; gap: 0.6rem; }
+    /* горизонтальний варіант: пігулки + поле в один рівень */
+    .msg--row { flex-direction: row; align-items: stretch; gap: var(--sp-2); }
+    .msg--row .msg__input { flex: 1; }
     .msg__toggle {
       display: inline-flex; gap: 4px; padding: 4px;
       background: var(--bg-surface); border: 1px solid var(--line);
-      border-radius: 100px; align-self: flex-start;
+      border-radius: 100px; align-self: center; flex: none;
     }
     .msg__opt {
       font-family: var(--font-body); font-size: 0.9rem; font-weight: 500;
@@ -1134,3 +1142,14 @@
     .msg__opt:hover { color: var(--text); }
     .msg__opt.is-active { background: var(--accent); color: var(--on-accent); }
     .msg__input { width: 100%; }
+
+    /* Бюджет — окремий ряд, поле пів-ширини ліворуч */
+    .form__row--single { display: block; }
+    .form__row--single .field { max-width: calc(50% - var(--sp-2)); }
+
+    /* На мобільному месенджер вертикально, бюджет на всю ширину */
+    @media (max-width: 560px) {
+      .msg--row { flex-direction: column; align-items: stretch; }
+      .msg--row .msg__toggle { align-self: flex-start; }
+      .form__row--single .field { max-width: 100%; }
+    }
