@@ -1086,9 +1086,8 @@
     }
     .field.is-invalid .field__error { opacity: 1; transform: none; }
 
-    /* Селекти без рядка помилки отримують нижній резерв (≈висота помилки),
-       щоб низи в парному ряду збігались із текстовими полями. */
-    .field--select { padding-bottom: 27px; }
+    /* Селекти й месенджер без рядка помилки — однаковий нижній резерв. */
+    .field--select, .field--msg { padding-bottom: 27px; }
 
     .form__foot { display: flex; align-items: center; gap: var(--sp-4); flex-wrap: wrap; margin-top: var(--sp-2); }
     .form__note { font-size: 0.85rem; color: var(--text-muted); }
@@ -1117,14 +1116,29 @@
       .contact__grid { grid-template-columns: 1fr; gap: var(--sp-8); }
     }
     @media (max-width: 560px) {
-      .form__row { grid-template-columns: 1fr; }
+      .form__row, .form__row--budget { grid-template-columns: 1fr; }
+      .msg { flex-direction: column; align-items: stretch; }
+      .msg__toggle { align-self: flex-start; }
+      .contact__title { overflow-wrap: break-word; hyphens: auto; }
+    }
+    @media (max-width: 380px) {
+      .contact__title { font-size: clamp(2rem, 8vw, 2.6rem); }
     }
 
     /* Optional label marker */
     .field label .opt { color: var(--text-muted); font-weight: 400; font-size: 0.8rem; }
 
     /* Messenger: pill toggle + input */
-    .msg { display: flex; flex-direction: column; gap: 0.6rem; }
+    /* Messenger: pills зліва + поле справа, горизонтально */
+    .msg { display: flex; flex-direction: row; align-items: center; gap: 0.5rem; }
+    .msg__input { flex: 1; min-width: 0; }
+    .msg__toggle {
+      display: inline-flex; gap: 3px; padding: 3px; flex: none;
+      background: var(--bg-surface); border: 1px solid var(--line);
+      border-radius: 100px;
+    }
+    /* Ряд «Бюджет + Месенджер» — асиметричний, месенджеру більше місця під поле */
+    .form__row--budget { grid-template-columns: 0.8fr 1.2fr; }
     /* горизонтальний варіант: пігулки + поле в один рівень */
     .msg--row { flex-direction: row; align-items: stretch; gap: var(--sp-2); }
     .msg--row .msg__input { flex: 1; }
