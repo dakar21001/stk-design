@@ -141,6 +141,97 @@
     .nav__links a:hover { color: var(--text); }
     .nav__links a:hover::after { transform: scaleX(1); transform-origin: left; }
 
+    /* ============================================================
+       BURGER
+       44×44 — мінімальна тап-зона (WCAG 2.5.5 / Apple HIG).
+       Візуально дві лінії 22px, решта — прозорий hit-area.
+       ============================================================ */
+    .burger {
+      display: none;
+      width: 44px; height: 44px;
+      margin-right: -10px;               /* оптичне вирівнювання по краю контейнера */
+      align-items: center; justify-content: center;
+      background: none; border: 0; padding: 0;
+      color: var(--text); cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .burger:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 10px; }
+    .burger__box { position: relative; display: block; width: 22px; height: 11px; }
+    .burger__box span {
+      position: absolute; left: 0; width: 100%; height: 1.5px;
+      background: currentColor; border-radius: 2px;
+      transition: transform 0.5s var(--ease), width 0.4s var(--ease);
+    }
+    .burger__box span:nth-child(1) { top: 0; }
+    .burger__box span:nth-child(2) { bottom: 0; width: 70%; }
+    .burger:hover .burger__box span:nth-child(2) { width: 100%; }
+    .burger[aria-expanded="true"] .burger__box span:nth-child(1) { transform: translateY(4.75px) rotate(45deg); }
+    .burger[aria-expanded="true"] .burger__box span:nth-child(2) { width: 100%; transform: translateY(-4.75px) rotate(-45deg); }
+
+    /* ============================================================
+       MOBILE OVERLAY NAV
+       clip-path-шторка замість translateY: немає overflow на body,
+       анімується лише composite-шар → не б'є по INP/CLS.
+       ============================================================ */
+    .mnav {
+      position: fixed; inset: 0; z-index: 90;
+      background: var(--bg);
+      display: flex; flex-direction: column;
+      padding: calc(var(--sp-8) + var(--sp-4)) var(--gutter) calc(var(--sp-4) + env(safe-area-inset-bottom));
+      opacity: 0; visibility: hidden;
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 0.65s var(--ease), opacity 0.3s var(--ease), visibility 0.65s;
+    }
+    .mnav[hidden] { display: none; }
+    .mnav.is-open { opacity: 1; visibility: visible; clip-path: inset(0 0 0 0); }
+
+    .mnav__inner {
+      display: flex; flex-direction: column; justify-content: space-between;
+      gap: var(--sp-6);
+      flex: 1; min-height: 0;
+      overflow-y: auto; overscroll-behavior: contain; /* ізолюємо скрол від body */
+    }
+
+    .mnav__list { list-style: none; border-top: 1px solid var(--line); }
+    .mnav__list li {
+      border-bottom: 1px solid var(--line);
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+      transition-delay: calc(var(--i) * 55ms + 140ms);
+    }
+    .mnav.is-open .mnav__list li { opacity: 1; transform: none; }
+
+    .mnav__list a {
+      display: flex; align-items: baseline; gap: var(--sp-2);
+      padding-block: var(--sp-3); min-height: 60px;
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 10vw, 3rem); line-height: 1.1;
+      letter-spacing: -0.03em; font-weight: 500; color: var(--text);
+      transition: color 0.3s var(--ease);
+    }
+    .mnav__list a:active { color: var(--accent); }
+    .mnav__num {
+      font-family: var(--font-body); font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.14em; color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mnav__foot {
+      display: flex; flex-direction: column; gap: var(--sp-3);
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+      transition-delay: calc(var(--i) * 55ms + 140ms);
+    }
+    .mnav.is-open .mnav__foot { opacity: 1; transform: none; }
+    .mnav__contact {
+      display: flex; flex-direction: column; gap: 0.35rem;
+      font-size: 0.95rem; color: var(--text-muted);
+    }
+    .mnav__contact a { color: var(--text); width: fit-content; border-bottom: 1px solid var(--line); }
+    .btn--block { width: 100%; }
+
+    body.nav-open { overflow: hidden; padding-right: var(--sbw, 0px); }
+
     /* Buttons */
     .btn {
       --pad-y: 0.85rem; --pad-x: 1.5rem;
@@ -692,6 +783,7 @@
     @media (max-width: 860px) {
       .nav__links { display: none; }
       .nav .btn--primary { display: none; }
+      .burger { display: inline-flex; }
       .stats { grid-template-columns: repeat(2, 1fr); }
       .stat:nth-child(2) { border-right: none; }
       .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 1px solid var(--line); }
@@ -1138,4 +1230,27 @@
       .msg { flex-direction: column; align-items: stretch; }
       .msg__toggle { align-self: flex-start; }
       .contact__title { font-size: clamp(2rem, 9vw, 2.6rem); }
+    }
+
+    /* ============================================================
+       MOBILE NAV — BREAKPOINT GUARDS
+       ============================================================ */
+    @media (min-width: 861px) {
+      .mnav { display: none !important; }
+      body.nav-open { overflow: auto; padding-right: 0; }
+    }
+
+    /* Низькі landscape-екрани: зменшуємо тайпскейл, щоб меню
+       не вимагало скролу. */
+    @media (max-width: 860px) and (max-height: 520px) {
+      .mnav { padding-top: var(--sp-8); }
+      .mnav__list a { font-size: 1.5rem; min-height: 48px; padding-block: var(--sp-1); }
+      .mnav__inner { gap: var(--sp-3); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .mnav, .mnav__list li, .mnav__foot, .burger__box span {
+        transition-duration: 0.001ms !important;
+        transition-delay: 0ms !important;
+      }
     }
