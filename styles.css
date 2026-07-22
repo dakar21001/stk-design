@@ -174,7 +174,11 @@
        анімується лише composite-шар → не б'є по INP/CLS.
        ============================================================ */
     .mnav {
-      position: fixed; inset: 0; z-index: 150; /* > .header (100): інакше is-stuck фон лягає поверх меню */
+      /* .mnav лежить у <body>, а НЕ в <header>: backdrop-filter на
+         .header.is-stuck створює containing block для position:fixed
+         нащадків — оверлей обрізався б до висоти хедера.
+         z-index 150 > .header (100), щоб перекрити липку смугу. */
+      position: fixed; inset: 0; z-index: 150;
       background: var(--bg);
       display: flex; flex-direction: column;
       padding: var(--sp-3) var(--gutter) calc(var(--sp-4) + env(safe-area-inset-bottom));
