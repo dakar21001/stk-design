@@ -60,9 +60,15 @@
 
   burger.addEventListener('click', () => (isOpen() ? close() : open()));
 
+  /* Кнопка закриття всередині оверлея. Потрібна, бо .mnav лежить
+     над .header — зовнішній бургер недоступний, поки меню відкрите. */
+  const closeBtn = document.getElementById('mnav-close');
+  closeBtn?.addEventListener('click', () => close());
+
   /* Клік по пункту — закриваємо. Критично для якірних посилань:
      інакше overlay лишиться поверх секції, до якої ми скролимо. */
   menu.addEventListener('click', e => {
+    if (e.target.closest('.mnav__close')) return; // має власний обробник із поверненням фокусу
     if (e.target.closest('a')) close({ restoreFocus: false });
   });
 
