@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Consent Mode v2 + аналітика. Має завантажуватись ДО будь-яких
+       тегів Google, тому без defer і найвище в <head>. -->
+  <script src="analytics.js"></script>
+
   <!-- Primary Meta -->
   <title>ST.K Design — Digital-продукти повного циклу: UX/UI, мобільні та веб-застосунки</title>
   <meta name="description" content="ST.K Design проєктує та розробляє цифрові продукти повного циклу: UX/UI-дизайн, мобільні й веб-застосунки, брендинг, MVP і підтримка. Продумано, швидко, з увагою до деталей." />
@@ -20,6 +24,9 @@
   <meta property="og:description" content="Проєктуємо та розробляємо цифрові продукти: UX/UI, мобільні й веб-застосунки, брендинг, MVP і підтримка." />
   <meta property="og:url" content="https://stkdesign.com/" />
   <meta property="og:image" content="https://stkdesign.com/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ST.K Design — digital-агенція повного циклу" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -112,6 +119,13 @@
     }
   }
   </script>
+
+
+  <!-- Favicons -->
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -537,7 +551,7 @@
         <div class="footer__social">
           <a href="https://dribbble.com/Koziumich" aria-label="Dribbble" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M8 3.5c4 5 5.5 9 6 17M21.5 10c-6-1-12 0-17.5 4M2.5 14c6-3 13-2 18 3"/></svg></a>
         </div>
-        <div><a href="privacy.html">Політика конфіденційності</a> · <a href="terms.html">Умови</a></div>
+        <div><a href="privacy.html">Політика конфіденційності</a> · <a href="terms.html">Умови</a> · <button type="button" class="footer__cookie" data-cookie-settings>Cookie</button></div>
       </div>
     </div>
   </footer>

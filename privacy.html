@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Consent Mode v2 + аналітика. Має завантажуватись ДО будь-яких
+       тегів Google, тому без defer і найвище в <head>. -->
+  <script src="analytics.js"></script>
+
   <title>Політика конфіденційності · ST.K Design</title>
   <meta name="description" content="Як ST.K Design збирає, використовує та захищає ваші персональні дані. Права користувача, файли cookie, аналітика та контакти для запитів щодо приватності." />
   <meta name="author" content="ST.K Design" />
@@ -18,7 +22,11 @@
   <meta property="og:description" content="Як ми збираємо, використовуємо та захищаємо ваші персональні дані." />
   <meta property="og:url" content="https://stkdesign.com/privacy" />
   <meta property="og:image" content="https://stkdesign.com/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ST.K Design — digital-агенція повного циклу" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://stkdesign.com/og-cover.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,6 +59,13 @@
     "publisher": { "@type": "Organization", "name": "ST.K Design", "url": "https://stkdesign.com/" }
   }
   </script>
+
+
+  <!-- Favicons -->
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -237,6 +252,11 @@
               <li><strong>Рекламні</strong> — дозволяють оцінити результативність рекламних кампаній. Вмикаються лише після вашої згоди.</li>
             </ul>
             <p>Ви можете будь-коли змінити свій вибір через банер налаштувань cookie або видалити збережені файли в налаштуваннях браузера. Вимкнення аналітичних і рекламних cookie не впливає на доступність контенту сайту.</p>
+
+            <div class="legal__callout">
+              <p><strong>Керування вибором.</strong> Ваші поточні налаштування зберігаються 180 днів. Змінити їх можна тут або через кнопку «Cookie» в підвалі будь-якої сторінки.</p>
+              <p><button type="button" class="btn btn--ghost" data-cookie-settings>Відкрити налаштування cookie</button></p>
+            </div>
           </section>
 
           <section class="legal__section" id="s5">
@@ -367,7 +387,7 @@
         <div class="footer__social">
           <a href="https://dribbble.com/Koziumich" aria-label="Dribbble" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M8 3.5c4 5 5.5 9 6 17M21.5 10c-6-1-12 0-17.5 4M2.5 14c6-3 13-2 18 3"/></svg></a>
         </div>
-        <div><a href="privacy.html" aria-current="page">Політика конфіденційності</a> · <a href="terms.html">Умови</a></div>
+        <div><a href="privacy.html" aria-current="page">Політика конфіденційності</a> · <a href="terms.html">Умови</a> · <button type="button" class="footer__cookie" data-cookie-settings>Cookie</button></div>
       </div>
     </div>
   </footer>
