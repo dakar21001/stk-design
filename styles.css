@@ -142,6 +142,46 @@
     .nav__links a:hover::after { transform: scaleX(1); transform-origin: left; }
 
     /* ============================================================
+       LANG SWITCH (inline UK / EN)
+       ============================================================ */
+    .lang {
+      display: inline-flex; align-items: center;
+      gap: 0.625rem;
+      font-family: var(--font-body);
+      font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .lang__item {
+      color: var(--text-muted);
+      text-transform: uppercase;
+      transition: color 0.3s var(--ease);
+    }
+    /* active language: non-interactive, higher contrast */
+    .lang__item[aria-current="page"] {
+      color: var(--text);
+      cursor: default;
+    }
+    /* link state (the other language) */
+    a.lang__item:hover { color: var(--text); }
+    a.lang__item:focus-visible {
+      outline: 2px solid var(--accent); outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .lang__sep {
+      width: 1px; height: 0.9em;
+      background: var(--text-muted); opacity: 0.4;
+      flex: 0 0 auto; align-self: center;
+    }
+    /* Mobile menu variant: larger, sits in the footer of the overlay */
+    .mnav__lang {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-top: var(--sp-3);
+      font-size: 0.95rem;
+    }
+    .mnav__lang .lang__sep { height: 1em; }
+
+    /* ============================================================
        BURGER
        44×44 — мінімальна тап-зона (WCAG 2.5.5 / Apple HIG).
        Візуально дві лінії 22px, решта — прозорий hit-area.
@@ -814,6 +854,7 @@
     @media (max-width: 860px) {
       .nav__links { display: none; }
       .nav .btn--primary { display: none; }
+      .nav .lang { display: none; }
       .burger { display: inline-flex; }
       .stats { grid-template-columns: repeat(2, 1fr); }
       .stat:nth-child(2) { border-right: none; }
