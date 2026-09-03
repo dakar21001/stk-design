@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Consent Mode v2 + analytics. Must load BEFORE any
+       Google tags, so no defer and placed highest in <head>. -->
+  <script src="/analytics.js"></script>
+
+  <title>Projects — ST.K Design digital product portfolio</title>
+  <meta name="description" content="The full ST.K Design portfolio: mobile and web apps, e-commerce, corporate websites and branding. Case studies with measurable results." />
+  <meta name="author" content="ST.K Design" />
+  <link rel="canonical" href="https://stkdesign.com/en/projects" />
+  <link rel="alternate" hreflang="uk" href="https://stkdesign.com/projects" />
+  <link rel="alternate" hreflang="en" href="https://stkdesign.com/en/projects" />
+  <link rel="alternate" hreflang="x-default" href="https://stkdesign.com/projects" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#F7F6F2" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="uk_UA" />
+  <meta property="og:site_name" content="ST.K Design" />
+  <meta property="og:title" content="Projects — ST.K Design digital product portfolio" />
+  <meta property="og:description" content="Full portfolio: mobile and web apps, e-commerce, websites and branding." />
+  <meta property="og:url" content="https://stkdesign.com/en/projects" />
+  <meta property="og:image" content="https://stkdesign.com/og-projects.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ST.K Design — full-cycle digital agency" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://stkdesign.com/og-projects.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" /></noscript>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://stkdesign.com/en/" },
+      { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://stkdesign.com/en/projects" }
+    ]
+  }
+  </script>
+
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <div class="wrap header__inner">
+      <a href="index.html" class="logo" aria-label="ST.K Design, home">ST<b>.</b>K</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <div class="nav__links">
+          <a href="index.html#services">Services</a>
+          <a href="projects.html">Work</a>
+          <a href="index.html#process">Process</a>
+          <a href="index.html#about">About</a>
+        </div>
+        <a href="contact.html" class="btn btn--primary">Start a project<span class="btn__arrow" aria-hidden="true">→</span></a>
+        <button class="burger" id="burger" type="button"
+                aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="burger__box" aria-hidden="true"><span></span><span></span></span>
+        </button>
+      </nav>
+    </div>
+
+  </header>
+
+  <div class="mnav" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu" hidden>
+    <div class="mnav__top">
+      <a href="index.html" class="logo" aria-label="ST.K Design, home">ST<b>.</b>K</a>
+      <button class="mnav__close" id="mnav-close" type="button" aria-label="Close menu">
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <line x1="4" y1="4" x2="16" y2="16"/>
+          <line x1="16" y1="4" x2="4" y2="16"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mnav__inner">
+      <ul class="mnav__list">
+        <li style="--i:0"><a href="index.html#services"><span class="mnav__num" aria-hidden="true">01</span>Services</a></li>
+        <li style="--i:1"><a href="projects.html"><span class="mnav__num" aria-hidden="true">02</span>Work</a></li>
+        <li style="--i:2"><a href="index.html#process"><span class="mnav__num" aria-hidden="true">03</span>Process</a></li>
+        <li style="--i:3"><a href="index.html#about"><span class="mnav__num" aria-hidden="true">04</span>About</a></li>
+      </ul>
+      <div class="mnav__foot" style="--i:4">
+        <a href="contact.html" class="btn btn--primary btn--block">Start a project<span class="btn__arrow" aria-hidden="true">→</span></a>
+        <div class="mnav__contact">
+          <span>Get in touch</span>
+          <a href="mailto:staskozumic@gmail.com">staskozumic@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- PAGE HERO -->
+    <section class="page-hero wrap" aria-labelledby="proj-title">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a> / <span>Projects</span>
+      </nav>
+      <h1 class="page-hero__title" id="proj-title">Work we’re<br>proud of</h1>
+      <p class="page-hero__lead">Every case is a product in production, with real users and measurable results. Pick a direction to narrow the selection.</p>
+      <div class="page-hero__count"><b id="projCount">0</b> projects in the portfolio</div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" style="padding-top:var(--sp-4)" aria-label="Projects list">
+      <div class="wrap">
+        <div class="filter" id="filter" role="tablist" aria-label="Filter by direction"></div>
+        <div class="pgrid" id="pgrid" role="list"></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta wrap" id="contact" aria-labelledby="cta-title">
+      <h2 class="cta__title" id="cta-title">Your project could be <em>next</em>.</h2>
+      <p class="cta__lead">Tell us about the task — we’ll come back with a plan and an estimate within a day.</p>
+      <div class="cta__actions">
+        <a href="contact.html" class="btn btn--primary" data-magnetic>Start a project<span class="btn__arrow" aria-hidden="true">→</span></a>
+        <a href="mailto:staskozumic@gmail.com" class="btn btn--ghost">Email us</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="logo">ST<b>.</b>K</div>
+          <p>Full-cycle digital agency. We design and build products people use every day.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="index.html#services">UX/UI Design</a></li>
+            <li><a href="index.html#services">Mobile Apps</a></li>
+            <li><a href="index.html#services">Web Applications</a></li>
+            <li><a href="index.html#services">Branding</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="projects.html">Work</a></li>
+            <li><a href="index.html#process">Process</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:staskozumic@gmail.com">staskozumic@gmail.com</a></li>
+            <li><a href="tel:+380662540637">+38 (066) 254-06-37</a></li>
+            <li><a href="index.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 ST.K Design. All rights reserved.</span>
+        <div class="footer__social">
+          <a href="https://dribbble.com/Koziumich" aria-label="Dribbble" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M8 3.5c4 5 5.5 9 6 17M21.5 10c-6-1-12 0-17.5 4M2.5 14c6-3 13-2 18 3"/></svg></a>
+        </div>
+        <div><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a> · <button type="button" class="footer__cookie" data-cookie-settings>Cookie</button></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/en/cases.js"></script>
+  <script>
+    (function () {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* --- Sticky header --- */
+      const header = document.getElementById('header');
+      const onH = () => header.classList.toggle('is-stuck', window.scrollY > 24);
+      onH(); window.addEventListener('scroll', onH, { passive: true });
+
+      /* --- Scroll progress --- */
+      const progress = document.getElementById('progress');
+      window.addEventListener('scroll', () => {
+        const h = document.documentElement;
+        progress.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+      }, { passive: true });
+
+      /* --- Reveal --- */
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+      /* --- Magnetic --- */
+      if (!reduced) {
+        document.querySelectorAll('[data-magnetic]').forEach(btn => {
+          btn.addEventListener('mousemove', (e) => {
+            const r = btn.getBoundingClientRect();
+            btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*0.25}px, ${(e.clientY-r.top-r.height/2)*0.35}px)`;
+          });
+          btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+        });
+      }
+
+      /* ============================================================
+         PROJECTS — rendered from the shared module + filter.
+         Data lives in cases.js. The admin panel hooks in there (loadCases).
+         ============================================================ */
+      const grid = document.getElementById('pgrid');
+      const filterBar = document.getElementById('filter');
+      const countEl = document.getElementById('projCount');
+
+      window.STK.loadCases().then(all => {
+        // counter
+        if (reduced) { countEl.textContent = all.length; }
+        else {
+          let n = 0; const step = () => { n++; countEl.textContent = n; if (n < all.length) setTimeout(step, 60); };
+          step();
+        }
+
+        // render grid
+        grid.innerHTML = all.map(window.STK.renderCaseGrid).join('');
+        grid.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+        // filter from data
+        const filters = window.STK.getFilters(all);
+        filterBar.innerHTML = filters.map((f, i) =>
+          `<button class="filter__btn${i === 0 ? ' is-active' : ''}" role="tab" aria-selected="${i === 0}" data-filter="${f}">${f}</button>`
+        ).join('');
+
+        // filtering logic
+        filterBar.addEventListener('click', (e) => {
+          const btn = e.target.closest('.filter__btn');
+          if (!btn) return;
+          const active = btn.dataset.filter;
+          filterBar.querySelectorAll('.filter__btn').forEach(b => {
+            const on = b === btn;
+            b.classList.toggle('is-active', on);
+            b.setAttribute('aria-selected', on ? 'true' : 'false');
+          });
+          let visible = 0;
+          grid.querySelectorAll('.pcard').forEach(card => {
+            const tags = (card.dataset.filters || '').split('|');
+            const show = active === 'All' || tags.includes(active);
+            card.classList.toggle('is-hidden', !show);
+            if (show) visible++;
+          });
+          // empty state
+          let empty = grid.querySelector('.pgrid__empty');
+          if (visible === 0) {
+            if (!empty) {
+              empty = document.createElement('p');
+              empty.className = 'pgrid__empty';
+              empty.textContent = 'No projects in this category yet.';
+              grid.appendChild(empty);
+            }
+          } else if (empty) { empty.remove(); }
+        });
+      });
+    })();
+  </script>
+  <script src="/nav.js" defer></script>
+</body>
+</html>

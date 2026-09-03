@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Consent Mode v2 + analytics. Must load BEFORE any
+       Google tags, so no defer and placed highest in <head>. -->
+  <script src="/analytics.js"></script>
+
+  <!-- Primary Meta -->
+  <title>ST.K Design — Full-cycle digital products: UX/UI, mobile & web apps</title>
+  <meta name="description" content="ST.K Design designs and builds full-cycle digital products: UX/UI design, mobile and web apps, branding, MVP and ongoing support. Thoughtful, fast, and detail-obsessed." />
+  <meta name="author" content="ST.K Design" />
+  <link rel="canonical" href="https://stkdesign.com/en/" />
+  <link rel="alternate" hreflang="uk" href="https://stkdesign.com/" />
+  <link rel="alternate" hreflang="en" href="https://stkdesign.com/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://stkdesign.com/" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="theme-color" content="#F7F6F2" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="uk_UA" />
+  <meta property="og:site_name" content="ST.K Design" />
+  <meta property="og:title" content="ST.K Design — Full-cycle digital products" />
+  <meta property="og:description" content="We design and build digital products: UX/UI, mobile and web apps, branding, MVP and support." />
+  <meta property="og:url" content="https://stkdesign.com/en/" />
+  <meta property="og:image" content="https://stkdesign.com/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ST.K Design — full-cycle digital agency" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ST.K Design — Full-cycle digital products" />
+  <meta name="twitter:description" content="UX/UI, mobile and web apps, branding, MVP and support for digital products." />
+  <meta name="twitter:image" content="https://stkdesign.com/og-cover.jpg" />
+
+  <!-- Fonts: preconnect + preload critical -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter+Tight:wght@400;500;600&display=swap" /></noscript>
+
+  <!-- JSON-LD: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ST.K Design",
+    "url": "https://stkdesign.com/en/",
+    "logo": "https://stkdesign.com/logo.svg",
+    "description": "Full-cycle digital agency: UX/UI design, mobile and web apps, branding, MVP development and support.",
+    "sameAs": [
+      "https://dribbble.com/Koziumich"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "staskozumic@gmail.com",
+      "contactType": "sales",
+      "availableLanguage": ["Ukrainian", "English"]
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage (rich snippets in Google) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does product development cost?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends on scope and complexity. A landing page starts in one range, a full application in another. After Discovery we give a precise estimate broken down by stage." }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a project take?",
+        "acceptedAnswer": { "@type": "Answer", "text": "An MVP usually takes 6–10 weeks; a mature product, three months or more. Exact timelines are locked in after Discovery, with weekly demos." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you only do design, or development too?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Full cycle: research, design, development, testing, release and support. One team drives the product from idea to production." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens after launch?",
+        "acceptedAnswer": { "@type": "Answer", "text": "We don’t disappear after release. We track metrics, fix bugs, build new features and stay on support." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can we start with a small step?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. We often start with Product Discovery or a prototype — an inexpensive way to validate the idea before major investment." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "provider": { "@type": "Organization", "name": "ST.K Design" },
+    "serviceType": "Digital product design and development",
+    "areaServed": "Worldwide",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "ST.K Design Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UX/UI Design" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile Apps Development" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Applications" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Corporate Websites" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-commerce" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding" } }
+      ]
+    }
+  }
+  </script>
+
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="header" id="header">
+    <div class="wrap header__inner">
+      <a href="/en/" class="logo" aria-label="ST.K Design, home">ST<b>.</b>K</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <div class="nav__links">
+          <a href="#services">Services</a>
+          <a href="#work">Work</a>
+          <a href="#process">Process</a>
+          <a href="#about">About</a>
+        </div>
+        <a href="contact.html" class="btn btn--primary">Start a project<span class="btn__arrow" aria-hidden="true">→</span></a>
+        <button class="burger" id="burger" type="button"
+                aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="burger__box" aria-hidden="true"><span></span><span></span></span>
+        </button>
+      </nav>
+    </div>
+
+  </header>
+
+  <div class="mnav" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Navigation menu" hidden>
+    <div class="mnav__top">
+      <a href="/en/" class="logo" aria-label="ST.K Design, home">ST<b>.</b>K</a>
+      <button class="mnav__close" id="mnav-close" type="button" aria-label="Close menu">
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <line x1="4" y1="4" x2="16" y2="16"/>
+          <line x1="16" y1="4" x2="4" y2="16"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mnav__inner">
+      <ul class="mnav__list">
+        <li style="--i:0"><a href="#services"><span class="mnav__num" aria-hidden="true">01</span>Services</a></li>
+        <li style="--i:1"><a href="#work"><span class="mnav__num" aria-hidden="true">02</span>Work</a></li>
+        <li style="--i:2"><a href="#process"><span class="mnav__num" aria-hidden="true">03</span>Process</a></li>
+        <li style="--i:3"><a href="#about"><span class="mnav__num" aria-hidden="true">04</span>About</a></li>
+      </ul>
+      <div class="mnav__foot" style="--i:4">
+        <a href="contact.html" class="btn btn--primary btn--block">Start a project<span class="btn__arrow" aria-hidden="true">→</span></a>
+        <div class="mnav__contact">
+          <span>Get in touch</span>
+          <a href="mailto:staskozumic@gmail.com">staskozumic@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <p class="hero__eyebrow" data-reveal>Full-cycle digital products</p>
+
+      <h1 class="hero__title" id="hero-title">
+        <span class="line"><span>We design</span></span>
+        <span class="line"><span>digital products</span></span>
+        <span class="line"><span>that <em data-scramble="work">work</em>.</span></span>
+      </h1>
+
+      <div class="hero__foot">
+        <p class="hero__lead" data-reveal data-reveal-delay="2">
+          From the first sketch to release and beyond. Design, mobile and web apps, branding and MVP — built by one team that owns the outcome.
+        </p>
+        <div class="hero__cta" data-reveal data-reveal-delay="3">
+          <a href="contact.html" class="btn btn--primary" data-magnetic>Start a project<span class="btn__arrow" aria-hidden="true">→</span></a>
+          <a href="#work" class="btn btn--ghost">View work</a>
+        </div>
+      </div>
+
+      <div class="hero__field" aria-hidden="true">
+        <canvas id="field"></canvas>
+      </div>
+    </section>
+
+    <!-- TRUST -->
+    <section class="trust" aria-label="Trust and numbers">
+      <div class="wrap">
+        <p class="trust__label" data-reveal>Trusted by teams that build products seriously</p>
+        <div class="marquee">
+          <div class="marquee__track">
+            <span class="marquee__item">Northwind</span>
+            <span class="marquee__item">Kyivstar Labs</span>
+            <span class="marquee__item">Monobank⁺</span>
+            <span class="marquee__item">Sifted</span>
+            <span class="marquee__item">Orbital</span>
+            <span class="marquee__item">Fintech Guild</span>
+            <!-- duplicate for seamless loop -->
+            <span class="marquee__item" aria-hidden="true">Northwind</span>
+            <span class="marquee__item" aria-hidden="true">Kyivstar Labs</span>
+            <span class="marquee__item" aria-hidden="true">Monobank⁺</span>
+            <span class="marquee__item" aria-hidden="true">Sifted</span>
+            <span class="marquee__item" aria-hidden="true">Orbital</span>
+            <span class="marquee__item" aria-hidden="true">Fintech Guild</span>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat" data-reveal>
+            <div class="stat__num"><span data-count="9">0</span><sup>+</sup></div>
+            <div class="stat__label">years in business</div>
+          </div>
+          <div class="stat" data-reveal data-reveal-delay="1">
+            <div class="stat__num"><span data-count="120">0</span><sup>+</sup></div>
+            <div class="stat__label">projects delivered</div>
+          </div>
+          <div class="stat" data-reveal data-reveal-delay="2">
+            <div class="stat__num"><span data-count="24">0</span></div>
+            <div class="stat__label">specialists on the team</div>
+          </div>
+          <div class="stat" data-reveal data-reveal-delay="3">
+            <div class="stat__num"><span data-count="14">0</span></div>
+            <div class="stat__label">client countries</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- SERVICES -->
+    <section class="section" id="services" aria-labelledby="svc-title">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <span class="section__eyebrow" data-reveal>What we do</span>
+            <h2 class="section__title" id="svc-title" data-reveal data-reveal-delay="1">Full cycle — from idea to a product in the user’s hands</h2>
+          </div>
+          <p class="section__aside" data-reveal data-reveal-delay="2">One team covers design, development and support. No handoffs between contractors — nothing lost in translation between stages.</p>
+        </div>
+
+        <div class="svc" role="list">
+          <div class="svc__row" role="listitem" tabindex="0">
+            <div class="svc__main">
+              <span class="svc__num">01</span>
+              <h3 class="svc__name">UX/UI Design</h3>
+              <span class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+            <div class="svc__detail"><div class="svc__detail-inner"><div class="svc__desc">
+              <p>Research, prototypes, design systems and interfaces that hand off cleanly to development and scale for years.</p>
+              <div class="svc__tags"><span class="svc__tag">Research</span><span class="svc__tag">Wireframes</span><span class="svc__tag">Design System</span><span class="svc__tag">Prototyping</span></div>
+            </div></div></div>
+          </div>
+
+          <div class="svc__row" role="listitem" tabindex="0">
+            <div class="svc__main">
+              <span class="svc__num">02</span>
+              <h3 class="svc__name">Mobile Apps</h3>
+              <span class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+            <div class="svc__detail"><div class="svc__detail-inner"><div class="svc__desc">
+              <p>Native and cross-platform apps for iOS and Android — fast, stable and store-ready.</p>
+              <div class="svc__tags"><span class="svc__tag">iOS</span><span class="svc__tag">Android</span><span class="svc__tag">React Native</span><span class="svc__tag">Flutter</span></div>
+            </div></div></div>
+          </div>
+
+          <div class="svc__row" role="listitem" tabindex="0">
+            <div class="svc__main">
+              <span class="svc__num">03</span>
+              <h3 class="svc__name">Web Applications</h3>
+              <span class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+            <div class="svc__detail"><div class="svc__detail-inner"><div class="svc__desc">
+              <p>Complex web products and dashboards with clean architecture and predictable performance.</p>
+              <div class="svc__tags"><span class="svc__tag">React</span><span class="svc__tag">Next.js</span><span class="svc__tag">Node</span><span class="svc__tag">TypeScript</span></div>
+            </div></div></div>
+          </div>
+
+          <div class="svc__row" role="listitem" tabindex="0">
+            <div class="svc__main">
+              <span class="svc__num">04</span>
+              <h3 class="svc__name">Corporate Websites</h3>
+              <span class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+            <div class="svc__detail"><div class="svc__detail-inner"><div class="svc__desc">
+              <p>Brand sites that load instantly, rank in search and convey the brand’s character precisely.</p>
+              <div class="svc__tags"><span class="svc__tag">SEO</span><span class="svc__tag">CMS</span><span class="svc__tag">Core Web Vitals</span></div>
+            </div></div></div>
+          </div>
+
+          <div class="svc__row" role="listitem" tabindex="0">
+            <div class="svc__main">
+              <span class="svc__num">05</span>
+              <h3 class="svc__name">E-commerce</h3>
+              <span class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+            <div class="svc__detail"><div class="svc__detail-inner"><div class="svc__desc">
+              <p>Online stores built for conversion: a clear path to purchase and a fast checkout.</p>
+              <div class="svc__tags"><span class="svc__tag">Shopify</span><span class="svc__tag">Headless</span><span class="svc__tag">Payments</span></div>
+            </div></div></div>
+          </div>
+
+          <div class="svc__row" role="listitem" tabindex="0">
+            <div class="svc__main">
+              <span class="svc__num">06</span>
+              <h3 class="svc__name">Branding</h3>
+              <span class="svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </div>
+            <div class="svc__detail"><div class="svc__detail-inner"><div class="svc__desc">
+              <p>Identity that works equally well on a business card and in an app — driven by logic, not just aesthetics.</p>
+              <div class="svc__tags"><span class="svc__tag">Logo</span><span class="svc__tag">Identity</span><span class="svc__tag">Guidelines</span></div>
+            </div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section process" id="process" aria-labelledby="proc-title">
+      <div class="proc__viewport" id="procViewport">
+        <div class="proc__sticky">
+          <div class="wrap" style="width:100%">
+            <span class="proc__label">How we work</span>
+            <h2 class="section__title" id="proc-title" style="margin-bottom:var(--sp-8)">Eight steps from brief to support</h2>
+            <div class="proc__track" id="procTrack">
+              <article class="proc__step"><div class="proc__step-num">01</div><h3 class="proc__step-name">Discovery</h3><p class="proc__step-desc">We dive into the business, goals and constraints. We shape a shared product vision.</p></article>
+              <article class="proc__step"><div class="proc__step-num">02</div><h3 class="proc__step-name">Research</h3><p class="proc__step-desc">We analyse the market, competitors and users. Hypotheses instead of guesses.</p></article>
+              <article class="proc__step"><div class="proc__step-num">03</div><h3 class="proc__step-name">Wireframes</h3><p class="proc__step-desc">We design logic and flows before pixels. Cheap to test ideas.</p></article>
+              <article class="proc__step"><div class="proc__step-num">04</div><h3 class="proc__step-name">UI Design</h3><p class="proc__step-desc">We craft the visual layer and build a design system to scale.</p></article>
+              <article class="proc__step"><div class="proc__step-num">05</div><h3 class="proc__step-name">Development</h3><p class="proc__step-desc">We write clean code with weekly demos. You see progress constantly.</p></article>
+              <article class="proc__step"><div class="proc__step-num">06</div><h3 class="proc__step-name">Testing</h3><p class="proc__step-desc">QA, load, edge cases. A release with no surprises in production.</p></article>
+              <article class="proc__step"><div class="proc__step-num">07</div><h3 class="proc__step-name">Launch</h3><p class="proc__step-desc">We prepare the infrastructure and go live. A smooth path to production.</p></article>
+              <article class="proc__step"><div class="proc__step-num">08</div><h3 class="proc__step-name">Support</h3><p class="proc__step-desc">We grow the product after release: metrics, iterations, new features.</p></article>
+            </div>
+            <div class="proc__bar" aria-hidden="true"><div class="proc__bar-fill" id="procFill"></div></div>
+            <span class="proc__hint" aria-hidden="true">↓ Scroll to walk the path</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK / PORTFOLIO (data-driven, CMS-ready) -->
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <span class="section__eyebrow" data-reveal>Selected work</span>
+            <h2 class="section__title" id="work-title" data-reveal data-reveal-delay="1">Products people use every day</h2>
+          </div>
+          <p class="section__aside" data-reveal data-reveal-delay="2">A few cases where design and development delivered measurable results. Full portfolio on request.</p>
+        </div>
+
+        <!-- Cases are rendered from a data array (see STK_CASES in the script).
+             Later replaced with fetch('/api/cases') from the admin panel. -->
+        <div class="work__list" id="workList" role="list"></div>
+
+        <div class="work__more" data-reveal>
+          <a href="projects.html" class="btn btn--ghost">Show all projects<span class="btn__arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="section" id="about" aria-labelledby="why-title">
+      <div class="wrap">
+        <div class="section__head">
+          <div>
+            <span class="section__eyebrow" data-reveal>Why ST.K</span>
+            <h2 class="section__title" id="why-title" data-reveal data-reveal-delay="1">Why clients stay with us for the long run</h2>
+          </div>
+          <p class="section__aside" data-reveal data-reveal-delay="2">Not a one-project studio, but a partner who guides the product for years — accountable for outcomes, not hours.</p>
+        </div>
+
+        <div class="bento">
+          <div class="bento__cell bento__cell--lg" data-reveal>
+            <div class="bento__top">
+              <div class="bento__num" data-count="9" data-suffix="">0</div>
+              <span class="bento__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.4"><path d="M12 2v20M2 12h20"/></svg></span>
+            </div>
+            <div>
+              <h3 class="bento__title">Years, not months</h3>
+              <p class="bento__label">Nine years building products and running them after release. Experience you can’t buy in a single sprint.</p>
+            </div>
+          </div>
+
+          <div class="bento__cell bento__cell--accent" data-reveal data-reveal-delay="1">
+            <div class="bento__num">1</div>
+            <div>
+              <h3 class="bento__title">One team</h3>
+              <p class="bento__label">Design and code under one roof. Nothing lost between contractors.</p>
+            </div>
+          </div>
+
+          <div class="bento__cell" data-reveal data-reveal-delay="2">
+            <div class="bento__num"><span data-count="120">0</span>+</div>
+            <div>
+              <h3 class="bento__title">Projects</h3>
+              <p class="bento__label">From MVPs to mature products.</p>
+            </div>
+          </div>
+
+          <div class="bento__cell bento__cell--wide" data-reveal data-reveal-delay="1">
+            <div class="bento__top">
+              <div>
+                <h3 class="bento__title">A transparent process</h3>
+                <p class="bento__label">Weekly demos, clear deadlines, access to the task board. You always see where the product is heading — no black boxes, no surprises at the end.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="bento__cell" data-reveal data-reveal-delay="2">
+            <div class="bento__num"><span data-count="98">0</span>%</div>
+            <div>
+              <h3 class="bento__title">Come back</h3>
+              <p class="bento__label">Clients return with their next product.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section quotes" aria-labelledby="quotes-title">
+      <div class="wrap">
+        <span class="section__eyebrow" data-reveal>Testimonials</span>
+        <h2 class="section__title" id="quotes-title" data-reveal data-reveal-delay="1" style="margin-bottom:var(--sp-8)">What people who worked with us say</h2>
+
+        <figure class="quote" id="quote" data-reveal>
+          <div class="quote__mark" aria-hidden="true">“</div>
+          <blockquote class="quote__text" id="quoteText">ST.K built our app faster than we’d planned just for the design. A rare case where a contractor thinks about the product, not the hours.</blockquote>
+          <figcaption class="quote__foot">
+            <div class="quote__author" id="quoteAuthor">
+              <div class="quote__name">Iryna Koval</div>
+              <div class="quote__role">Product Lead, Northwind</div>
+            </div>
+            <div class="quote__nav">
+              <span class="quote__count" id="quoteCount">01 / 03</span>
+              <button class="quote__btn" id="quotePrev" aria-label="Previous testimonial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+              <button class="quote__btn" id="quoteNext" aria-label="Next testimonial"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+    <!-- FAQ -->
+    <section class="section faq" id="faq" aria-labelledby="faq-title">
+      <div class="wrap">
+        <div class="faq__grid">
+          <div>
+            <span class="section__eyebrow" data-reveal>FAQ</span>
+            <h2 class="section__title" id="faq-title" data-reveal data-reveal-delay="1">Frequently asked questions</h2>
+            <p class="section__aside" data-reveal data-reveal-delay="2" style="margin-top:var(--sp-4)">Didn’t find your answer? Drop us a line — we reply within a day.</p>
+          </div>
+          <div class="faq__list" data-reveal>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false"><span>How much does product development cost?</span><span class="faq__icon" aria-hidden="true"></span></button>
+              <div class="faq__a"><div class="faq__a-inner"><p>It depends on scope and complexity. A landing page starts in one range, a full application in another. After Discovery we give a precise estimate broken down by stage, so you see exactly what you pay for.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false"><span>How long does a project take?</span><span class="faq__icon" aria-hidden="true"></span></button>
+              <div class="faq__a"><div class="faq__a-inner"><p>An MVP usually takes 6–10 weeks; a mature product, three months or more. Exact timelines are locked in after Discovery, once the scope is clear. You get a plan with weekly demos.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false"><span>Do you only do design, or development too?</span><span class="faq__icon" aria-hidden="true"></span></button>
+              <div class="faq__a"><div class="faq__a-inner"><p>Full cycle: research, design, development, testing, release and support. One team drives the product from idea to production — no handoffs between contractors.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false"><span>What happens after launch?</span><span class="faq__icon" aria-hidden="true"></span></button>
+              <div class="faq__a"><div class="faq__a-inner"><p>We don’t disappear after release. We track metrics, fix bugs and build new features. Most clients stay with us for support and their next products.</p></div></div>
+            </div>
+            <div class="faq__item">
+              <button class="faq__q" aria-expanded="false"><span>Can we start with a small step?</span><span class="faq__icon" aria-hidden="true"></span></button>
+              <div class="faq__a"><div class="faq__a-inner"><p>Yes. We often start with Product Discovery or a prototype — an inexpensive way to validate the idea before major investment. From there we move in stages you control.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta wrap" id="contact" aria-labelledby="cta-title">
+      <h2 class="cta__title" id="cta-title" data-reveal>Got an idea? <em>Let’s</em> make it a product.</h2>
+      <p class="cta__lead" data-reveal data-reveal-delay="1">Tell us about the task — we’ll come back with a plan and an estimate within a day. No strings attached.</p>
+      <div class="cta__actions" data-reveal data-reveal-delay="2">
+        <a href="contact.html" class="btn btn--primary" data-magnetic>Start a project<span class="btn__arrow" aria-hidden="true">→</span></a>
+        <a href="projects.html" class="btn btn--ghost">View work</a>
+      </div>
+      <p class="cta__meta" data-reveal data-reveal-delay="3">or email us directly: <a href="mailto:staskozumic@gmail.com">staskozumic@gmail.com</a></p>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <div class="logo">ST<b>.</b>K</div>
+          <p>Full-cycle digital agency. We design and build products people use every day.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services">UX/UI Design</a></li>
+            <li><a href="#services">Mobile Apps</a></li>
+            <li><a href="#services">Web Applications</a></li>
+            <li><a href="#services">Branding</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:staskozumic@gmail.com">staskozumic@gmail.com</a></li>
+            <li><a href="tel:+380662540637">+38 (066) 254-06-37</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 ST.K Design. All rights reserved.</span>
+        <div class="footer__social">
+          <a href="https://dribbble.com/Koziumich" aria-label="Dribbble" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M8 3.5c4 5 5.5 9 6 17M21.5 10c-6-1-12 0-17.5 4M2.5 14c6-3 13-2 18 3"/></svg></a>
+        </div>
+        <div><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms</a> · <button type="button" class="footer__cookie" data-cookie-settings>Cookie</button></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/en/cases.js"></script>
+  <script>
+    // ============================================================
+    // ST.K DESIGN — INTERACTIONS
+    // All animations respect prefers-reduced-motion
+    // ============================================================
+    (function () {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ============================================================
+         PORTFOLIO — rendered from the shared cases.js module (window.STK).
+         On the home page we show only featured cases.
+         Data and rendering live in cases.js — that is the admin integration point.
+         ============================================================ */
+      const workList = document.getElementById('workList');
+      if (workList && window.STK) {
+        window.STK.loadCases().then(all => {
+          const featured = all.filter(c => c.featured);
+          workList.innerHTML = featured.map(window.STK.renderCaseLarge).join('');
+          // io is declared below in the same closure; it already exists by microtask time
+          workList.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+        });
+      }
+
+      /* --- Testimonials carousel (data from Sanity, fallback — inline) --- */
+      const FALLBACK_QUOTES = [
+        { text: 'ST.K built our app faster than we’d planned just for the design. A rare case where a contractor thinks about the product, not the hours.', name: 'Iryna Koval', role: 'Product Lead, Northwind' },
+        { text: 'The design system they handed over still holds the whole product together. We scale without pain — the best investment we made all year.', name: 'Andrii Melnyk', role: 'CTO, Orbital' },
+        { text: 'The new checkout paid back the entire project in two months. A team that truly understands conversion, not just “pretty”.', name: 'Olena Hnatiuk', role: 'Founder, Sifted' }
+      ];
+      const qEl = document.getElementById('quote');
+      if (qEl) {
+        const qText = document.getElementById('quoteText');
+        const qName = qEl.querySelector('.quote__name');
+        const qRole = qEl.querySelector('.quote__role');
+        const qCount = document.getElementById('quoteCount');
+        let QUOTES = FALLBACK_QUOTES;
+        let qi = 0;
+        const show = (i) => {
+          qi = (i + QUOTES.length) % QUOTES.length;
+          const q = QUOTES[qi];
+          qEl.classList.add('is-fading');
+          setTimeout(() => {
+            qText.textContent = q.text;
+            qName.textContent = q.name;
+            qRole.textContent = q.role;
+            qCount.textContent = String(qi + 1).padStart(2, '0') + ' / ' + String(QUOTES.length).padStart(2, '0');
+            qEl.classList.remove('is-fading');
+          }, reduced ? 0 : 400);
+        };
+        document.getElementById('quoteNext').addEventListener('click', () => show(qi + 1));
+        document.getElementById('quotePrev').addEventListener('click', () => show(qi - 1));
+        // load from Sanity; if present — replace the fallback
+        if (window.STK && window.STK.loadQuotes) {
+          window.STK.loadQuotes().then(qs => {
+            if (qs && qs.length) { QUOTES = qs; qi = 0; show(0); }
+          });
+        }
+      }
+
+      /* --- FAQ accordion --- */
+      document.querySelectorAll('.faq__q').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.closest('.faq__item');
+          const isOpen = item.classList.toggle('open');
+          btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      });
+
+      /* --- Sticky header --- */
+      const header = document.getElementById('header');
+      const onScrollHeader = () => header.classList.toggle('is-stuck', window.scrollY > 24);
+      onScrollHeader();
+      window.addEventListener('scroll', onScrollHeader, { passive: true });
+
+      /* --- Scroll progress --- */
+      const progress = document.getElementById('progress');
+      const onScrollProgress = () => {
+        const h = document.documentElement;
+        const p = h.scrollTop / (h.scrollHeight - h.clientHeight);
+        progress.style.width = (p * 100) + '%';
+      };
+      window.addEventListener('scroll', onScrollProgress, { passive: true });
+
+      if (reduced) {
+        // Show everything at once, without motion
+        document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('in'));
+        document.querySelectorAll('.hero__title .line > span').forEach(s => s.style.transform = 'none');
+        document.querySelectorAll('[data-count]').forEach(el => el.textContent = el.dataset.count + (el.dataset.suffix || ''));
+        document.querySelectorAll('.svc__row').forEach(r => r.classList.add('open'));
+        return;
+      }
+
+      /* --- Hero title reveal: mask + subtle char stagger --- */
+      const lines = document.querySelectorAll('.hero__title .line > span');
+      lines.forEach((s, i) => {
+        s.style.transform = 'translateY(110%)';
+        s.style.transition = 'transform 1s var(--ease)';
+        s.style.transitionDelay = (0.15 + i * 0.1) + 's';
+      });
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        lines.forEach(s => s.style.transform = 'translateY(0)');
+      }));
+
+      /* --- Scramble effect on accent word (hover) --- */
+      const glyphs = 'абвгдеёжзийклмнопрстуфхцч#%@&*';
+      document.querySelectorAll('[data-scramble]').forEach(el => {
+        const final = el.dataset.scramble;
+        let raf;
+        const run = () => {
+          let frame = 0;
+          const total = 14;
+          cancelAnimationFrame(raf);
+          const step = () => {
+            const progress = frame / total;
+            let out = '';
+            for (let i = 0; i < final.length; i++) {
+              out += i < progress * final.length
+                ? final[i]
+                : glyphs[Math.floor(Math.random() * glyphs.length)];
+            }
+            el.textContent = out;
+            if (frame < total) { frame++; raf = requestAnimationFrame(step); }
+            else el.textContent = final;
+          };
+          step();
+        };
+        el.addEventListener('mouseenter', run);
+      });
+
+      /* --- Hero interactive dot field (signature visual) --- */
+      const canvas = document.getElementById('field');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let W, H, dpr, dots = [];
+        const mouse = { x: -9999, y: -9999 };
+        const GAP = 34, RADIUS = 130;
+
+        const readColors = () => {
+          const cs = getComputedStyle(document.documentElement);
+          return {
+            dot: cs.getPropertyValue('--text-muted').trim(),
+            accent: cs.getPropertyValue('--accent').trim(),
+          };
+        };
+        let colors = readColors();
+
+        const build = () => {
+          const r = canvas.parentElement.getBoundingClientRect();
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          W = r.width; H = r.height;
+          canvas.width = W * dpr; canvas.height = H * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          dots = [];
+          for (let y = GAP; y < H; y += GAP) {
+            for (let x = GAP; x < W; x += GAP) {
+              dots.push({ x, y, bx: x, by: y });
+            }
+          }
+        };
+
+        const draw = () => {
+          ctx.clearRect(0, 0, W, H);
+          for (const d of dots) {
+            const dx = d.x - mouse.x, dy = d.y - mouse.y;
+            const dist = Math.hypot(dx, dy);
+            let r = 1.1, active = 0;
+            if (dist < RADIUS) {
+              const f = (1 - dist / RADIUS);
+              active = f;
+              const push = f * 14;
+              d.x = d.bx + (dx / (dist || 1)) * push;
+              d.y = d.by + (dy / (dist || 1)) * push;
+              r = 1.1 + f * 2.2;
+            } else {
+              d.x += (d.bx - d.x) * 0.08;
+              d.y += (d.by - d.y) * 0.08;
+            }
+            ctx.beginPath();
+            ctx.arc(d.x, d.y, r, 0, Math.PI * 2);
+            ctx.fillStyle = active > 0.15 ? colors.accent : colors.dot;
+            ctx.globalAlpha = active > 0.15 ? (0.35 + active * 0.65) : 0.26;
+            ctx.fill();
+          }
+          ctx.globalAlpha = 1;
+          requestAnimationFrame(draw);
+        };
+
+        build();
+        draw();
+        window.addEventListener('resize', build);
+        window.addEventListener('mousemove', (e) => {
+          const r = canvas.getBoundingClientRect();
+          mouse.x = e.clientX - r.left;
+          mouse.y = e.clientY - r.top;
+        }, { passive: true });
+        window.addEventListener('mouseleave', () => { mouse.x = mouse.y = -9999; });
+      }
+
+      /* --- Magnetic buttons --- */
+      document.querySelectorAll('[data-magnetic]').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+          const r = btn.getBoundingClientRect();
+          const x = e.clientX - r.left - r.width / 2;
+          const y = e.clientY - r.top - r.height / 2;
+          btn.style.transform = `translate(${x * 0.25}px, ${y * 0.35}px)`;
+        });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+      });
+
+      /* --- Services: stagger reveal + click/keyboard toggle --- */
+      const svcRows = document.querySelectorAll('.svc__row');
+      svcRows.forEach((row, i) => {
+        row.setAttribute('data-reveal', '');
+        row.style.transitionDelay = (i * 0.06) + 's';
+        // click/tap expands (for touch devices without hover)
+        const toggle = () => row.classList.toggle('open');
+        row.addEventListener('click', toggle);
+        row.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+        });
+      });
+
+      /* --- Process: scroll-driven horizontal timeline --- */
+      const viewport = document.getElementById('procViewport');
+      const track = document.getElementById('procTrack');
+      const fill = document.getElementById('procFill');
+      if (viewport && track && window.innerWidth > 860) {
+        // viewport height = horizontal scroll length + 1 screen
+        const setHeight = () => {
+          const extra = track.scrollWidth - track.clientWidth;
+          viewport.style.height = (window.innerHeight + Math.max(extra, 0)) + 'px';
+        };
+        setHeight();
+        window.addEventListener('resize', setHeight);
+
+        const steps = track.querySelectorAll('.proc__step');
+        const onScroll = () => {
+          const rect = viewport.getBoundingClientRect();
+          const total = viewport.offsetHeight - window.innerHeight;
+          const scrolled = Math.min(Math.max(-rect.top, 0), total);
+          const p = total > 0 ? scrolled / total : 0;
+          const maxX = track.scrollWidth - track.clientWidth;
+          track.style.transform = `translateX(${-p * maxX}px)`;
+          if (fill) fill.style.width = (p * 100) + '%';
+          // active step = closest to the centre of the screen
+          const active = Math.round(p * (steps.length - 1));
+          steps.forEach((s, i) => s.classList.toggle('is-active', i === active));
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+      }
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+      /* --- Number counter --- */
+      const countIO = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const target = parseInt(el.dataset.count, 10);
+          const suffix = el.dataset.suffix || '';
+          const dur = 1400; const start = performance.now();
+          const tick = (now) => {
+            const p = Math.min((now - start) / dur, 1);
+            const eased = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(target * eased) + suffix;
+            if (p < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+          countIO.unobserve(el);
+        });
+      }, { threshold: 0.6 });
+      document.querySelectorAll('[data-count]').forEach(el => countIO.observe(el));
+    })();
+  </script>
+  <script src="/nav.js" defer></script>
+</body>
+</html>
