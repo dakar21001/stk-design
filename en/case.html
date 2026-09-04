@@ -244,6 +244,18 @@
       });
     })();
   </script>
+  <script>
+    /* Keep the current case when switching language:
+       append ?slug=... to the switcher links so /case.html?slug=x
+       maps to /en/case.html?slug=x (and back). */
+    (function () {
+      var slug = new URLSearchParams(location.search).get('slug');
+      if (!slug) return;
+      document.querySelectorAll('.lang__item[href]').forEach(function (a) {
+        a.href = a.getAttribute('href') + '?slug=' + encodeURIComponent(slug);
+      });
+    })();
+  </script>
   <script src="/nav.js" defer></script>
 </body>
 </html>
