@@ -103,3 +103,53 @@
     if (e.persisted && !menu.hidden) close({ restoreFocus: false });
   });
 })();
+
+/* ============================================================
+   ST.K DESIGN — ANALYTICS (Cloudflare Web Analytics)
+   Cloudflare WA не має API кастомних подій, тож конверсії
+   відстежуємо як virtual pageviews через History API — beacon
+   фіксує їх на зміні маршруту. Реальний URL одразу відновлюємо
+   через replaceState, тож користувач ніколи не бачить службову
+   адресу, а історія «Назад» лишається чистою.
+   ============================================================ */
+(() => {
+  'use strict';
+
+  /* Показуємо beacon службовий шлях і повертаємо справжній URL.
+     RUM надсилається через navigator.sendBeacon, тому подія
+     доходить навіть при негайній навігації (клік по CTA). */
+  const virtualPageview = (path) => {
+    try {
+      const current = location.pathname + location.search + location.hash;
+      history.pushState(history.state, '', path);
+      history.replaceState(history.state, '', current);
+    } catch (_) { /* аналітика не має ламати сторінку */ }
+  };
+
+  /* Події, які варто бачити у статистиці (низькочастотні).
+     form_validation_fail свідомо НЕ трекаємо — це шум. */
+  const TRACKED = { form_error: '/event/form-error' };
+
+  window.stkAnalytics = {
+    /* Головна конверсія — успішна заявка з форми контакту. */
+    trackLead() { virtualPageview('/lead-success'); },
+    /* Довільна подія з whitelist → службовий pageview. */
+    track(name) {
+      const path = TRACKED[name];
+      if (path) virtualPageview(path);
+    }
+  };
+
+  /* CTA «Почати проєкт» / «Обговорити проєкт» → /cta-order.
+     Делеговано на document (capture), щоб покрити header, hero,
+     cta-секцію й мобільне меню на всіх сторінках. Без preventDefault:
+     навігація на contact.html відбувається штатно, конверсія
+     фіксується в момент кліку. Модифіковані кліки (нова вкладка)
+     та середню кнопку як конверсію не рахуємо. */
+  document.addEventListener('click', (e) => {
+    if (e.defaultPrevented || e.button !== 0) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const cta = e.target.closest('a.btn--primary[href*="contact"]');
+    if (cta) virtualPageview('/cta-order');
+  }, true);
+})();
