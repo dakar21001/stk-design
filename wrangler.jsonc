@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "stk-design",
+  "compatibility_date": "2026-10-23",
+  "observability": { "enabled": true },
+  "assets": {
+    // Сайт статичний: віддаємо файли з кореня репозиторію.
+    // Що НЕ публікувати — у .assetsignore (насамперед .git).
+    "directory": ".",
+    // /projects → projects.html, /projects.html → 307 на /projects
+    "html_handling": "auto-trailing-slash",
+    // Невідома адреса → найближчий 404.html (/en/... → /en/404.html)
+    "not_found_handling": "404-page"
+  }
+}

@@ -9,9 +9,9 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
-# Технічна адреса *.pages.dev не повинна потрапити в Google
+# Технічна адреса *.workers.dev не повинна потрапити в Google
 # (інакше дубль контенту з основним доменом)
-https://:project.pages.dev/*
+https://stk-design.staskozumic.workers.dev/*
   X-Robots-Tag: noindex
 
 # Статичні зображення й іконки змінюються рідко — кеш на 7 днів.
@@ -25,8 +25,3 @@ https://:project.pages.dev/*
   Cache-Control: public, max-age=604800
 /*.svg
   Cache-Control: public, max-age=604800
-
-# Вихідний код воркерів лежить у репо для резервної копії.
-# Pages віддає його як статику, тому прибираємо з пошуку.
-/workers/*
-  X-Robots-Tag: noindex

@@ -1,0 +1,19 @@
+# Файли репозиторію, які НЕ мають бути доступні на сайті.
+# Синтаксис як у .gitignore.
+
+# git-історія (інакше весь репозиторій можна скачати за /.git/)
+.git
+.gitignore
+.assetsignore
+
+# конфіг і службові файли Cloudflare
+wrangler.jsonc
+wrangler.toml
+.wrangler
+node_modules
+
+# вихідний код воркерів і локальні папки
+workers/
+Claude outputs/
+_to_delete/
+*.md
