@@ -1,0 +1,5 @@
+# ST.K Design — https://stk-design.biz.ua
+User-agent: *
+Allow: /
+
+Sitemap: https://stk-design.biz.ua/sitemap.xml

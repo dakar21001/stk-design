@@ -179,7 +179,7 @@
         <div class="case__media">
           <span class="case__index">${idx}</span>
           ${mediaTag(c)}
-          <a class="case__view" href="case.html?slug=${c.slug}" aria-label="Open case study ${c.title}">
+          <a class="case__view" href="case?slug=${c.slug}" aria-label="Open case study ${c.title}">
             View case
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
           </a>
@@ -201,7 +201,7 @@
     ).join('');
     return `
       <article class="pcard" role="listitem" data-reveal data-filters="${c.filters.join('|')}">
-        <a class="pcard__link" href="case.html?slug=${c.slug}" aria-label="Open case study ${c.title}">
+        <a class="pcard__link" href="case?slug=${c.slug}" aria-label="Open case study ${c.title}">
           <div class="pcard__media">
             ${mediaTag(c)}
             <span class="pcard__year">${c.year}</span>
@@ -302,7 +302,7 @@
     return `
       <section class="cp__hero wrap">
         <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="index.html">Home</a> / <a href="projects.html">Projects</a> / <span>${esc(c.title)}</span>
+          <a href="./">Home</a> / <a href="projects">Projects</a> / <span>${esc(c.title)}</span>
         </nav>
         <div class="cp__cat">${esc(c.category)}</div>
         <h1 class="cp__title">${esc(c.title)}</h1>

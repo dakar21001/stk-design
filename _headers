@@ -1,0 +1,32 @@
+# Cloudflare Pages — заголовки відповіді
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+# Безпека для всіх сторінок
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+# Технічна адреса *.pages.dev не повинна потрапити в Google
+# (інакше дубль контенту з основним доменом)
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+# Статичні зображення й іконки змінюються рідко — кеш на 7 днів.
+# CSS/JS без хешу в імені, тому для них лишаємо стандартну
+# ревалідацію Cloudflare (ETag), щоб правки долітали одразу.
+/*.jpg
+  Cache-Control: public, max-age=604800
+/*.png
+  Cache-Control: public, max-age=604800
+/*.ico
+  Cache-Control: public, max-age=604800
+/*.svg
+  Cache-Control: public, max-age=604800
+
+# Вихідний код воркерів лежить у репо для резервної копії.
+# Pages віддає його як статику, тому прибираємо з пошуку.
+/workers/*
+  X-Robots-Tag: noindex

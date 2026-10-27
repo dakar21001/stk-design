@@ -41,13 +41,13 @@
     {
       "name": "Обговорити проєкт",
       "short_name": "Контакти",
-      "url": "/contact.html",
+      "url": "/contact",
       "icons": [{ "src": "favicon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Наші роботи",
       "short_name": "Проєкти",
-      "url": "/projects.html",
+      "url": "/projects",
       "icons": [{ "src": "favicon-192.png", "sizes": "192x192" }]
     }
   ]
