@@ -171,8 +171,7 @@ p { text-wrap: pretty; }
 .section--surface { background: var(--surface); }
 .sec-head { max-width: 720px; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
 .sec-head--row { max-width: none; display: flex; align-items: flex-end; justify-content: space-between; gap: var(--sp-4); }
-.eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .8125rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--sp-2); }
-.eyebrow::before { content: ""; width: 18px; height: 2px; background: currentColor; }
+.eyebrow { font-size: .8125rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: var(--sp-2); }
 .eyebrow--light { color: #A9BBF6; }
 .sec-title { font-size: var(--fs-h2); line-height: 1.04; }
 .sec-lead { margin-top: var(--sp-2); font-size: var(--fs-lead); color: var(--muted); max-width: 52ch; }
