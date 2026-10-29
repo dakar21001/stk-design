@@ -17,3 +17,6 @@ workers/
 Claude outputs/
 _to_delete/
 *.md
+
+# порожня папка для старого хостингу Render (лише редирект)
+render-redirect/
