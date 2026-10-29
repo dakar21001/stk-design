@@ -3,7 +3,13 @@
   "name": "stk-design",
   "compatibility_date": "2026-10-23",
   "observability": { "enabled": true },
+  // Код воркера потрібен лише для динамічного /sitemap.xml (з кейсів Sanity).
+  "main": "src/index.js",
   "assets": {
+    "binding": "ASSETS",
+    // Воркер запускається тільки для цих шляхів; решту Cloudflare віддає
+    // напряму зі статики (швидше й не витрачає ліміт запитів воркера).
+    "run_worker_first": ["/sitemap.xml"],
     // Сайт статичний: віддаємо файли з кореня репозиторію.
     // Що НЕ публікувати — у .assetsignore (насамперед .git).
     "directory": ".",
