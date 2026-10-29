@@ -1,3 +1,6 @@
 # Локальні файли, не для сайту
 Claude outputs/
 _to_delete/
+
+# робочі файли taste-skill (скриншоти інспектора)
+.taste-skill/

@@ -87,9 +87,11 @@ export default {
     const d = {};
     for (const [k, max] of Object.entries(MAX_LEN)) d[k] = clean(fd.get(k), max);
 
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email);
+    // Обов'язкові: ім'я й телефон. Email і текст можуть бути порожні
+    // (коротка форма посадкової /start), але якщо email є, він має бути коректним.
+    const emailOk = !d.email || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email);
     const phoneOk = /^[+\d][\d\s()\-]{6,}$/.test(d.phone);
-    if (!d.name || !emailOk || !phoneOk || !d.message) {
+    if (!d.name || !emailOk || !phoneOk) {
       return json({ success: false, error: "validation" }, 422, origin);
     }
 
@@ -102,15 +104,16 @@ export default {
       `<b>Нова заявка з сайту</b> · ${lang}`,
       "",
       `<b>Ім'я:</b> ${esc(d.name)}`,
-      `<b>Email:</b> ${esc(d.email)}`,
+      d.email ? `<b>Email:</b> ${esc(d.email)}` : null,
       `<b>Телефон:</b> ${esc(d.phone)}`,
       d.messenger ? `<b>${esc(d.messenger_type || "Месенджер")}:</b> ${esc(d.messenger)}` : null,
       d.type ? `<b>Тип проєкту:</b> ${esc(d.type)}` : null,
       d.budget ? `<b>Бюджет:</b> ${esc(d.budget)}` : null,
       "",
-      `<b>Про проєкт:</b>`,
-      esc(d.message),
-      "",
+      d.message ? `<b>Про проєкт:</b>` : null,
+      d.message ? esc(d.message) : null,
+      d.message ? "" : null,
+      d.page ? `<b>Джерело:</b> ${esc(d.page)}` : null,
       `<i>${esc(origin)}</i>`,
     ].filter((l) => l !== null);
 

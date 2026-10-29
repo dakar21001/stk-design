@@ -25,3 +25,7 @@ https://stk-design.staskozumic.workers.dev/*
   Cache-Control: public, max-age=604800
 /*.svg
   Cache-Control: public, max-age=604800
+
+# Шрифти не змінюються: кеш на рік
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -23,3 +23,8 @@ render-redirect/
 
 # код воркера сайту (динамічний sitemap)
 src/
+
+# скіли Claude і робочі файли taste-skill (не для сайту)
+.claude/
+.taste-skill/
+DESIGN.md
