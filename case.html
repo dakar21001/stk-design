@@ -201,6 +201,8 @@
             </section>`;
           document.getElementById('nextCase').hidden = true;
           document.title = 'Кейс не знайдено — ST.K Design';
+          // Порожня сторінка не повинна потрапити в індекс Google (soft 404)
+          document.querySelector('meta[name="robots"]').setAttribute('content', 'noindex, follow');
           return;
         }
 
